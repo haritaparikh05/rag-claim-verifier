@@ -1,0 +1,5 @@
+psycopg2-binary>=2.9
+pgvector>=0.2.5
+sentence-transformers>=2.7
+pypdf>=4.0
+python-dotenv>=1.0
