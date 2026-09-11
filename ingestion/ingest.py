@@ -1,4 +1,5 @@
 import os
+import re
 from pathlib import Path
 
 import psycopg2
@@ -15,11 +16,54 @@ EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 100
 
+LANGUAGE_MARKER_RE = re.compile(r"^\s*\[([A-Z]{2})\]\s*$", re.MULTILINE)
+
+
+def _is_prose_line(line: str) -> bool:
+    """A long line containing letters reads as a real sentence fragment.
+    isalpha() (unlike islower()) is true for CJK ideographs too, which have
+    no case distinction, so this also catches Chinese/Japanese/Korean prose."""
+    return len(line) > 25 and any(c.isalpha() for c in line)
+
+
+def restrict_to_english_section(text: str) -> str:
+    """Some manuals repeat the same instructions in multiple languages, tagged
+    with markers like [EN], [FR], [DA]. Claims are always in English, so the
+    [EN] section is kept in full and other-language sentences are dropped.
+    Some manuals also mix in shared, language-neutral reference content
+    (icon legends, numeric spec tables) under a non-English marker purely
+    because of page layout - since that's short label/number lines rather
+    than sentences, it survives a line-level (not whole-segment) prose
+    filter applied to the non-English sections."""
+    markers = list(LANGUAGE_MARKER_RE.finditer(text))
+    if not markers:
+        return text
+
+    segments = []
+    for i, m in enumerate(markers):
+        start = m.end()
+        end = markers[i + 1].start() if i + 1 < len(markers) else len(text)
+        segments.append((m.group(1), text[start:end]))
+
+    kept_parts = []
+    for lang, seg in segments:
+        if lang == "EN":
+            kept_parts.append(seg)
+        else:
+            non_prose_lines = [
+                line for line in seg.split("\n") if line.strip() and not _is_prose_line(line.strip())
+            ]
+            if non_prose_lines:
+                kept_parts.append("\n".join(non_prose_lines))
+
+    return "\n".join(kept_parts) if kept_parts else text
+
 
 def extract_text(file_path: Path) -> str:
     if file_path.suffix.lower() == ".pdf":
         reader = PdfReader(str(file_path))
-        return "\n".join(page.extract_text() or "" for page in reader.pages)
+        text = "\n".join(page.extract_text() or "" for page in reader.pages)
+        return restrict_to_english_section(text)
     text = file_path.read_text(encoding="utf-8")
     if file_path.suffix.lower() == ".md" and "\n---\n" in text:
         text = text.split("\n---\n", 1)[1]
