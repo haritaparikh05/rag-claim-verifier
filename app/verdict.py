@@ -23,7 +23,7 @@ load_dotenv()
 MODEL = "gemini-3.5-flash-lite"
 MAX_RETRIES = 3
 RETRY_BASE_DELAY_SECONDS = 2
-DEFAULT_TOP_K = 5
+DEFAULT_TOP_K = 8
 
 _client = None
 

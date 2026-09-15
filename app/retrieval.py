@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 load_dotenv()
 
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
-DEFAULT_TOP_K = 5
+DEFAULT_TOP_K = 8
 
 _model = None
 
