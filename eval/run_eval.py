@@ -5,43 +5,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.verdict import verify_claim
+from eval.metrics import compute_metrics, print_metrics_report
 
 EVAL_SET_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "eval_set.json"
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "eval_results.json"
 
-VERDICTS = ["supported", "contradicted", "unverifiable"]
 DELAY_BETWEEN_CALLS_SECONDS = 4  # stay under the Gemini free tier's ~15 requests/minute limit
-
-
-def compute_metrics(results: list[dict]) -> dict:
-    per_class = {v: {"tp": 0, "fp": 0, "fn": 0} for v in VERDICTS}
-    correct = 0
-
-    for r in results:
-        expected = r["expected_verdict"]
-        actual = r["actual_verdict"]
-        if actual == expected:
-            correct += 1
-            per_class[expected]["tp"] += 1
-        else:
-            if actual in per_class:
-                per_class[actual]["fp"] += 1
-            per_class[expected]["fn"] += 1
-
-    metrics = {}
-    for v, counts in per_class.items():
-        tp, fp, fn = counts["tp"], counts["fp"], counts["fn"]
-        precision = tp / (tp + fp) if (tp + fp) > 0 else None
-        recall = tp / (tp + fn) if (tp + fn) > 0 else None
-        f1 = (
-            2 * precision * recall / (precision + recall)
-            if precision is not None and recall is not None and (precision + recall) > 0
-            else None
-        )
-        metrics[v] = {"precision": precision, "recall": recall, "f1": f1, "support": tp + fn}
-
-    metrics["overall_accuracy"] = correct / len(results) if results else None
-    return metrics
 
 
 def main():
@@ -78,18 +47,7 @@ def main():
             time.sleep(DELAY_BETWEEN_CALLS_SECONDS)
 
     metrics = compute_metrics(results)
-
-    print("\n=== Results ===")
-    for v in VERDICTS:
-        m = metrics[v]
-        p = f"{m['precision']:.2f}" if m["precision"] is not None else "n/a"
-        r = f"{m['recall']:.2f}" if m["recall"] is not None else "n/a"
-        f1 = f"{m['f1']:.2f}" if m["f1"] is not None else "n/a"
-        print(f"{v:15s} precision={p}  recall={r}  f1={f1}  (n={m['support']})")
-    print(
-        f"\nOverall accuracy: {metrics['overall_accuracy']:.2%} "
-        f"({sum(r['match'] for r in results)}/{len(results)})"
-    )
+    print_metrics_report(results, metrics)
 
     failures = [r for r in results if not r["match"]]
     if failures:
