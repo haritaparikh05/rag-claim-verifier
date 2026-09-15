@@ -34,3 +34,6 @@ docker/volumes/
 
 # Logs
 *.log
+
+# Eval resume checkpoints (redundant with the final results file)
+data/eval/*_progress.json
