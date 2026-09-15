@@ -14,7 +14,13 @@ from app.retrieval import retrieve_chunks
 
 load_dotenv()
 
-MODEL = "gemini-flash-latest"
+# Pinned rather than using the "-latest" alias: that alias resolves to
+# Google's newest flagship-adjacent model, which on the free tier has a much
+# stricter daily quota (20 requests/day, hit during eval testing) than the
+# lighter "flash-lite" line (reported ~1000/day). This is a fast
+# classification task, not one that needs flagship reasoning, so flash-lite
+# is the better fit anyway.
+MODEL = "gemini-3.5-flash-lite"
 MAX_RETRIES = 3
 RETRY_BASE_DELAY_SECONDS = 2
 DEFAULT_TOP_K = 5
@@ -32,6 +38,8 @@ Based ONLY on the passages above (not on any outside knowledge), classify the cl
 - "supported": the passages directly confirm the claim
 - "contradicted": the passages directly conflict with the claim
 - "unverifiable": the passages don't contain enough information to confirm or deny the claim
+
+When comparing numbers, remember that meeting or exceeding a documented threshold satisfies a claim of that threshold or less: if the documentation says a spec is "at least X" or "up to X", a claim of X or anything less than X is SUPPORTED, not contradicted, since exceeding a minimum or staying under a maximum still meets it. Only mark a numeric claim as "contradicted" when it asserts a value the documentation shows is not actually met (e.g. claiming MORE than a stated maximum, or LESS than a stated minimum).
 
 Respond with ONLY a JSON object in this exact format, no other text, no markdown formatting:
 {{
@@ -70,18 +78,22 @@ def parse_verdict_response(text: str) -> dict:
     return json.loads(text.strip())
 
 
+RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
+
+
 def _generate_with_retry(client: genai.Client, model: str, prompt: str):
-    """The free Gemini tier occasionally returns 503 UNAVAILABLE under load -
-    a transient server issue, not a real failure, so retry with backoff
-    instead of surfacing it as a crash."""
+    """The free Gemini tier occasionally returns 503 (server overload) or 429
+    (rate limit) - both transient, not real failures, so retry with backoff
+    instead of surfacing them as a crash. Other errors (bad request, auth)
+    are raised immediately since retrying won't fix them."""
     for attempt in range(MAX_RETRIES):
         try:
             return client.models.generate_content(model=model, contents=prompt)
-        except genai_errors.ServerError:
-            if attempt == MAX_RETRIES - 1:
+        except genai_errors.APIError as e:
+            if e.code not in RETRYABLE_STATUS_CODES or attempt == MAX_RETRIES - 1:
                 raise
             delay = RETRY_BASE_DELAY_SECONDS * (2 ** attempt)
-            print(f"Gemini server busy, retrying in {delay}s...", file=sys.stderr)
+            print(f"Gemini API busy ({e.code}), retrying in {delay}s...", file=sys.stderr)
             time.sleep(delay)
 
 

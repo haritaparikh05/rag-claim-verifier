@@ -1,0 +1,164 @@
+[
+  {
+    "product_id": "black_diamond_spot_400",
+    "claim": "waterproof to 1 meter for 30 minutes",
+    "expected_verdict": "supported",
+    "note": "Manual states IPX8: waterproof-tested to at least 1.1 meters for 30 minutes"
+  },
+  {
+    "product_id": "black_diamond_spot_400",
+    "claim": "operates for 100 hours on high brightness",
+    "expected_verdict": "contradicted",
+    "note": "Manual states max burntime on high is 2.5-4 hours"
+  },
+  {
+    "product_id": "black_diamond_spot_400",
+    "claim": "includes a carrying case",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  },
+  {
+    "product_id": "jbl_flip_6",
+    "claim": "IP67 waterproof and dustproof",
+    "expected_verdict": "supported",
+    "note": "Spec sheet states IP67 waterproof and dustproof directly"
+  },
+  {
+    "product_id": "jbl_flip_6",
+    "claim": "24 hours of battery life",
+    "expected_verdict": "contradicted",
+    "note": "Spec sheet states 12 hours of playtime"
+  },
+  {
+    "product_id": "jbl_flip_6",
+    "claim": "has a built-in flashlight",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  },
+  {
+    "product_id": "nalgene_32oz_wide_mouth",
+    "claim": "BPA-free",
+    "expected_verdict": "supported",
+    "note": "Product page states BPA/BPS-Free directly"
+  },
+  {
+    "product_id": "nalgene_32oz_wide_mouth",
+    "claim": "not safe to put in the dishwasher",
+    "expected_verdict": "contradicted",
+    "note": "Product page states Dishwasher Safe directly"
+  },
+  {
+    "product_id": "nalgene_32oz_wide_mouth",
+    "claim": "includes a built-in compass",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  },
+  {
+    "product_id": "anker_313_powercore_10k",
+    "claim": "10000mAh capacity",
+    "expected_verdict": "supported",
+    "note": "Product page states 10000mAh Portable Charger directly"
+  },
+  {
+    "product_id": "anker_313_powercore_10k",
+    "claim": "20000mAh capacity",
+    "expected_verdict": "contradicted",
+    "note": "Product page states 10000mAh, not 20000mAh"
+  },
+  {
+    "product_id": "anker_313_powercore_10k",
+    "claim": "supports wireless charging",
+    "expected_verdict": "unverifiable",
+    "note": "Only wired USB-C/USB-A ports are mentioned, no wireless charging"
+  },
+  {
+    "product_id": "alps_helix_2",
+    "claim": "sleeps 2 people",
+    "expected_verdict": "supported",
+    "note": "Product is named and described as the Helix 2-Person Tent"
+  },
+  {
+    "product_id": "alps_helix_2",
+    "claim": "the rainfly has a 500mm waterproof coating",
+    "expected_verdict": "contradicted",
+    "note": "Spec page states the fly has a 2000mm silicone/pu coating"
+  },
+  {
+    "product_id": "alps_helix_2",
+    "claim": "comes with a lifetime warranty",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  },
+  {
+    "product_id": "instant_pot_duo",
+    "claim": "has a 6-quart capacity",
+    "expected_verdict": "supported",
+    "note": "Manual states Instant Pot Size 6 Quarts / 5.7 Litres"
+  },
+  {
+    "product_id": "instant_pot_duo",
+    "claim": "has a 10-quart capacity",
+    "expected_verdict": "contradicted",
+    "note": "Manual states 6 quarts, not 10"
+  },
+  {
+    "product_id": "instant_pot_duo",
+    "claim": "is compatible with induction cooktops",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  },
+  {
+    "product_id": "ninja_blender_bl621",
+    "claim": "has a 1100-watt motor",
+    "expected_verdict": "supported",
+    "note": "Manual states 1100 watts of professional power directly"
+  },
+  {
+    "product_id": "ninja_blender_bl621",
+    "claim": "has a 500-watt motor",
+    "expected_verdict": "contradicted",
+    "note": "Manual states 1100 watts, not 500"
+  },
+  {
+    "product_id": "ninja_blender_bl621",
+    "claim": "comes with a travel strap",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  },
+  {
+    "product_id": "philips_airfryer_hd9252",
+    "claim": "has a 4.1 liter capacity",
+    "expected_verdict": "supported",
+    "note": "Manual states pan capacity of 4.1 L directly"
+  },
+  {
+    "product_id": "philips_airfryer_hd9252",
+    "claim": "has an 8 liter capacity",
+    "expected_verdict": "contradicted",
+    "note": "Manual states 4.1 L, not 8 L"
+  },
+  {
+    "product_id": "philips_airfryer_hd9252",
+    "claim": "includes a physical recipe book",
+    "expected_verdict": "unverifiable",
+    "note": "Manual mentions recipes via a companion app, not a physical book"
+  },
+  {
+    "product_id": "soundcore_life_q20",
+    "claim": "reduces ambient noise by up to 90%",
+    "expected_verdict": "supported",
+    "note": "Product page states reduce ambient noises by up to 90% directly"
+  },
+  {
+    "product_id": "soundcore_life_q20",
+    "claim": "reduces ambient noise by up to 50%",
+    "expected_verdict": "contradicted",
+    "note": "Product page states up to 90%, not 50%"
+  },
+  {
+    "product_id": "soundcore_life_q20",
+    "claim": "is waterproof",
+    "expected_verdict": "unverifiable",
+    "note": "Not mentioned anywhere in the source docs"
+  }
+]
