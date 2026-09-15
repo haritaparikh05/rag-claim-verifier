@@ -41,6 +41,8 @@ Based ONLY on the passages above (not on any outside knowledge), classify the cl
 
 When comparing numbers, remember that meeting or exceeding a documented threshold satisfies a claim of that threshold or less: if the documentation says a spec is "at least X" or "up to X", a claim of X or anything less than X is SUPPORTED, not contradicted, since exceeding a minimum or staying under a maximum still meets it. Only mark a numeric claim as "contradicted" when it asserts a value the documentation shows is not actually met (e.g. claiming MORE than a stated maximum, or LESS than a stated minimum).
 
+A passage only counts as evidence if it actually addresses the same specific attribute as the claim - not merely because it shares a keyword. For example, a safety warning about not letting a power cord touch a stovetop says nothing about whether the appliance itself is compatible with induction cooktops as a cooking surface; sharing the word "stovetop" does not make it relevant evidence. If the passages don't genuinely speak to the claim's actual subject, the verdict is "unverifiable", not "contradicted".
+
 Respond with ONLY a JSON object in this exact format, no other text, no markdown formatting:
 {{
   "verdict": "supported" | "contradicted" | "unverifiable",

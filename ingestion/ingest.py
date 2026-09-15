@@ -70,17 +70,33 @@ def extract_text(file_path: Path) -> str:
     return text
 
 
+SECTION_HEADER_RE = re.compile(r"^[A-Z][A-Z0-9 ,:&/'\-]{2,60}$")
+
+
+def _is_section_header(line: str) -> bool:
+    """An all-caps short line reads as a section header (e.g. 'TECHNICAL
+    SPECIFICATIONS', 'FEATURES:') rather than a sentence."""
+    return bool(SECTION_HEADER_RE.match(line))
+
+
 def chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
     paragraphs = [p.strip() for p in text.split("\n") if p.strip()]
     chunks: list[str] = []
     current = ""
     for para in paragraphs:
-        if len(current) + len(para) + 1 <= chunk_size:
+        # Start a fresh chunk at a section header instead of merging it into
+        # whatever came before - otherwise a spec table can end up sharing a
+        # chunk with unrelated preceding content (e.g. safety warnings),
+        # diluting the embedding of the actual spec text.
+        starts_new_section = bool(current) and _is_section_header(para)
+        fits = len(current) + len(para) + 1 <= chunk_size
+
+        if not starts_new_section and fits:
             current = f"{current}\n{para}".strip()
         else:
             if current:
                 chunks.append(current)
-            overlap_text = current[-overlap:] if current else ""
+            overlap_text = "" if starts_new_section else (current[-overlap:] if current else "")
             current = f"{overlap_text}\n{para}".strip()
     if current:
         chunks.append(current)
