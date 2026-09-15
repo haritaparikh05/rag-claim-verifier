@@ -1,0 +1,268 @@
+{
+  "results": [
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "waterproof to 1 meter for 30 minutes",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "IPX8: Waterproof-Tested to operate at least 1.1 meters underwater for 30 minutes.",
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "operates for 100 hours on high brightness",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Max Burntime: [High] 2.5/4 hrs \u00e2\u20ac\u00a2 [Medium] 5/8 hrs \u00e2\u20ac\u00a2 [Low] 200/225 hrs \u00e2\u20ac\u00a2 AAA/BD 1500 Battery",
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "includes a carrying case",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "IP67 waterproof and dustproof",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "IP67 waterproof and dustproof",
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "24 hours of battery life",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Music play time: up to 12 hours (dependent on volume level and audio content)",
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "has a built-in flashlight",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "BPA-free",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "BPA/BPS-Free",
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "not safe to put in the dishwasher",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Dishwasher Safe\nSafe to put in the dishwasher and easy to clean.",
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "includes a built-in compass",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "10000mAh capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Total Capacity:\n10,000mAh",
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "20000mAh capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1,
+      "cited_passage": "Total Capacity:\n10,000mAh",
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "supports wireless charging",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "sleeps 2 people",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1,
+      "cited_passage": "Helix 2-Person",
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "the rainfly has a 500mm waterproof coating",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1,
+      "cited_passage": "20D 380T nylon ripstop fly with 2000 mm silicone/pu coating",
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "comes with a lifetime warranty",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "has a 6-quart capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "DUPC601BK 6 Quarts\n5.7 Litres",
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "has a 10-quart capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Model Volume Wattage Power Weight Dimensions\nDUPC601BK 6 Quarts\n5.7 Litres",
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "is compatible with induction cooktops",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 1100-watt motor",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "\u2022 1100-Watt Motor Base",
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 500-watt motor",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "\u2022 1100-Watt Motor Base",
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "comes with a travel strap",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has a 4.1 liter capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "\u2022 Pan (liter*): 4.1 L",
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has an 8 liter capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Capacity\n\u2022 Pan (liter*): 4.1 L",
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "includes a physical recipe book",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "reduces ambient noise by up to 90%",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Reduce Ambient noises by up to 90%",
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "reduces ambient noise by up to 50%",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1,
+      "cited_passage": "Reduce Ambient noises by up to 90%",
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "is waterproof",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    }
+  ],
+  "metrics": {
+    "supported": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 9
+    },
+    "contradicted": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 9
+    },
+    "unverifiable": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 9
+    },
+    "overall_accuracy": 1.0
+  }
+}
