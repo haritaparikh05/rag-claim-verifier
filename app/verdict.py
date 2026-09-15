@@ -43,6 +43,8 @@ When comparing numbers, remember that meeting or exceeding a documented threshol
 
 A passage only counts as evidence if it actually addresses the same specific attribute as the claim - not merely because it shares a keyword. For example, a safety warning about not letting a power cord touch a stovetop says nothing about whether the appliance itself is compatible with induction cooktops as a cooking surface; sharing the word "stovetop" does not make it relevant evidence. If the passages don't genuinely speak to the claim's actual subject, the verdict is "unverifiable", not "contradicted".
 
+Do not use general world knowledge to fill in gaps the passages are silent on, even when you're confident a claim is implausible or false in reality. For example, if a claim asserts something about a person's birthplace and the passages only mention their birth date, that's "unverifiable", not "contradicted" - the passages simply never address birthplace, regardless of what you may know about it independently. Only mark "contradicted" when the passages themselves state something inconsistent with the claim.
+
 Respond with ONLY a JSON object in this exact format, no other text, no markdown formatting:
 {{
   "verdict": "supported" | "contradicted" | "unverifiable",

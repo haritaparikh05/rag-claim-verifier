@@ -9,8 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.verdict import MODEL, build_prompt, get_client, parse_verdict_response, _generate_with_retry
 from eval.metrics import compute_metrics, print_metrics_report
 
-PROGRESS_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "fever_eval_progress.json"
-RESULTS_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "fever_eval_results.json"
+EVAL_DIR = Path(__file__).resolve().parent.parent / "data" / "eval"
 
 # pietrolesci/nli_fever repackages FEVER as (premise, hypothesis, label) NLI
 # pairs. Empirically verified (not just trusting the dataset card): `premise`
@@ -18,11 +17,11 @@ RESULTS_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "fever
 # Wikipedia evidence text - the reverse of what the card's own summary says.
 LABEL_MAP = {0: "supported", 1: "unverifiable", 2: "contradicted"}
 DELAY_BETWEEN_CALLS_SECONDS = 4  # stay under the Gemini free tier's ~15 requests/minute limit
-SEED = 42  # fixed so the sampled set is reproducible run to run
+DEFAULT_SEED = 42
 DEFAULT_N_PER_CLASS = 100
 
 
-def build_sample(n_per_class: int) -> list[dict]:
+def build_sample(n_per_class: int, seed: int) -> list[dict]:
     from datasets import load_dataset
 
     ds = load_dataset("pietrolesci/nli_fever", split="dev")
@@ -32,7 +31,7 @@ def build_sample(n_per_class: int) -> list[dict]:
         if label in by_label:
             by_label[label].append(i)
 
-    rng = random.Random(SEED)
+    rng = random.Random(seed)
     sample_indices = []
     for indices in by_label.values():
         shuffled = indices[:]
@@ -53,15 +52,15 @@ def build_sample(n_per_class: int) -> list[dict]:
     return sample
 
 
-def load_progress() -> dict:
-    if PROGRESS_PATH.exists():
-        with open(PROGRESS_PATH, encoding="utf-8") as f:
+def load_progress(progress_path: Path) -> dict:
+    if progress_path.exists():
+        with open(progress_path, encoding="utf-8") as f:
             return {r["id"]: r for r in json.load(f)}
     return {}
 
 
-def save_progress(progress: dict) -> None:
-    with open(PROGRESS_PATH, "w", encoding="utf-8") as f:
+def save_progress(progress: dict, progress_path: Path) -> None:
+    with open(progress_path, "w", encoding="utf-8") as f:
         json.dump(list(progress.values()), f, indent=2)
 
 
@@ -72,13 +71,24 @@ def main():
         description="Evaluate the verdict step against a stratified sample of FEVER (NLI-reformatted)"
     )
     parser.add_argument("--n-per-class", type=int, default=DEFAULT_N_PER_CLASS)
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=DEFAULT_SEED,
+        help="Sampling seed - use a different value to validate on a fresh, never-seen sample "
+        "(results are saved to a seed-specific file so they never overwrite another run's).",
+    )
     args = parser.parse_args()
 
-    print("Loading FEVER (NLI format) dev split...")
-    sample = build_sample(args.n_per_class)
-    print(f"Sampled {len(sample)} examples ({args.n_per_class} per class, seed={SEED})")
+    suffix = "" if args.seed == DEFAULT_SEED else f"_seed{args.seed}"
+    progress_path = EVAL_DIR / f"fever_eval{suffix}_progress.json"
+    results_path = EVAL_DIR / f"fever_eval_results{suffix}.json"
 
-    progress = load_progress()
+    print("Loading FEVER (NLI format) dev split...")
+    sample = build_sample(args.n_per_class, args.seed)
+    print(f"Sampled {len(sample)} examples ({args.n_per_class} per class, seed={args.seed})")
+
+    progress = load_progress(progress_path)
     remaining = [case for case in sample if case["id"] not in progress]
     if progress:
         print(f"Resuming: {len(progress)} already done, {len(remaining)} remaining")
@@ -110,12 +120,12 @@ def main():
         }
 
         if i % 5 == 0 or i == len(remaining):
-            save_progress(progress)
+            save_progress(progress, progress_path)
 
         if i < len(remaining):
             time.sleep(DELAY_BETWEEN_CALLS_SECONDS)
 
-    save_progress(progress)
+    save_progress(progress, progress_path)
 
     missing = [case["id"] for case in sample if case["id"] not in progress]
     if missing:
@@ -125,13 +135,13 @@ def main():
     metrics = compute_metrics(results)
     print_metrics_report(results, metrics)
 
-    with open(RESULTS_PATH, "w", encoding="utf-8") as f:
+    with open(results_path, "w", encoding="utf-8") as f:
         json.dump(
-            {"n_per_class": args.n_per_class, "seed": SEED, "results": results, "metrics": metrics},
+            {"n_per_class": args.n_per_class, "seed": args.seed, "results": results, "metrics": metrics},
             f,
             indent=2,
         )
-    print(f"\nSaved detailed results to {RESULTS_PATH}")
+    print(f"\nSaved detailed results to {results_path}")
 
 
 if __name__ == "__main__":
