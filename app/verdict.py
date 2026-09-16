@@ -8,6 +8,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 from google.genai import errors as genai_errors
+from google.genai import types as genai_types
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.retrieval import retrieve_chunks
@@ -24,6 +25,11 @@ MODEL = "gemini-3.5-flash-lite"
 MAX_RETRIES = 3
 RETRY_BASE_DELAY_SECONDS = 2
 DEFAULT_TOP_K = 8
+
+# This is a classification task with a single correct answer per input, not
+# a creative one - temperature=0 makes the model deterministic instead of
+# sampling, which reduces noise-driven misclassifications.
+GENERATION_CONFIG = genai_types.GenerateContentConfig(temperature=0)
 
 _client = None
 
@@ -92,7 +98,7 @@ def _generate_with_retry(client: genai.Client, model: str, prompt: str):
     are raised immediately since retrying won't fix them."""
     for attempt in range(MAX_RETRIES):
         try:
-            return client.models.generate_content(model=model, contents=prompt)
+            return client.models.generate_content(model=model, contents=prompt, config=GENERATION_CONFIG)
         except genai_errors.APIError as e:
             if e.code not in RETRYABLE_STATUS_CODES or attempt == MAX_RETRIES - 1:
                 raise
