@@ -18,5 +18,33 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build: .
+    container_name: claimverifier-app
+    restart: unless-stopped
+    environment:
+      # DB_HOST is "db" (the compose service name), not "localhost" - inside
+      # the app container, "localhost" would mean the container itself, not
+      # the db container. This is the one setting that has to differ from
+      # the local-dev .env, so it's overridden explicitly here rather than
+      # inherited.
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-claimverifier}
+      DB_USER: ${DB_USER:-claimverifier}
+      DB_PASSWORD: ${DB_PASSWORD:-claimverifier}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
 volumes:
   pgdata:

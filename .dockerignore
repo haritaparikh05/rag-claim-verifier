@@ -1,0 +1,14 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.git/
+.pytest_cache/
+.cache/
+data/
+ingestion/
+eval/
+tests/
+*.md
+.env
+docker/volumes/
