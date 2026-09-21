@@ -37,3 +37,9 @@ docker/volumes/
 
 # Eval resume checkpoints (redundant with the final results file)
 data/eval/*_progress.json
+
+# Project notes and working-agreement memory - kept local, never pushed
+# (this repo is public; these files describe internal AI-assisted workflow
+# conventions not meant for the public-facing portfolio repo)
+CLAUDE.md
+memory/
