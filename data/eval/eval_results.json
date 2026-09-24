@@ -5,7 +5,7 @@
       "claim": "waterproof to 1 meter for 30 minutes",
       "expected_verdict": "supported",
       "actual_verdict": "supported",
-      "confidence": 1.0,
+      "confidence": 1,
       "cited_passage": "IPX8: Waterproof-Tested to operate at least 1.1 meters underwater for 30 minutes.",
       "match": true
     },
@@ -14,8 +14,8 @@
       "claim": "operates for 100 hours on high brightness",
       "expected_verdict": "contradicted",
       "actual_verdict": "contradicted",
-      "confidence": 1.0,
-      "cited_passage": "Max Burntime: [High] 2.5/4 hrs \u00e2\u20ac\u00a2 [Medium] 5/8 hrs \u00e2\u20ac\u00a2 [Low] 200/225 hrs \u00e2\u20ac\u00a2 AAA/BD 1500 Battery",
+      "confidence": 1,
+      "cited_passage": "Max Burntime: [High] 2.5/4 hrs \u2022 [Medium] 5/8 hrs \u2022 [Low] 200/225 hrs \u2022 AAA/BD 1500 Battery",
       "match": true
     },
     {
@@ -212,7 +212,7 @@
       "claim": "includes a physical recipe book",
       "expected_verdict": "unverifiable",
       "actual_verdict": "unverifiable",
-      "confidence": 1.0,
+      "confidence": 1,
       "cited_passage": "",
       "match": true
     },
@@ -239,7 +239,7 @@
       "claim": "is waterproof",
       "expected_verdict": "unverifiable",
       "actual_verdict": "unverifiable",
-      "confidence": 1.0,
+      "confidence": 1,
       "cited_passage": "",
       "match": true
     }
