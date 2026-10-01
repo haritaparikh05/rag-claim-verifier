@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   lint-and-test:
@@ -58,3 +59,84 @@ jobs:
 
       - name: Test
         run: pytest
+
+  deploy:
+    needs: lint-and-test
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    concurrency:
+      group: deploy
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    env:
+      IMAGE: ghcr.io/${{ github.repository }}
+      AWS_REGION: us-east-1
+      INSTANCE_ID: i-066761733c615d3a7
+      DEPLOY_ROLE_ARN: arn:aws:iam::277666705689:role/claimverifier-github-deploy
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
+          labels: org.opencontainers.image.source=https://github.com/${{ github.repository }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Check instance is running
+        id: instance
+        run: |
+          state=$(aws ec2 describe-instances --instance-ids "$INSTANCE_ID" --query 'Reservations[0].Instances[0].State.Name' --output text)
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+          if [ "$state" != "running" ]; then
+            echo "::notice::Instance is $state, image was pushed but the deploy step was skipped"
+          fi
+
+      - name: Deploy to instance
+        if: steps.instance.outputs.state == 'running'
+        run: |
+          cmd_id=$(aws ssm send-command \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name AWS-RunShellScript \
+            --comment "deploy $GITHUB_SHA" \
+            --parameters 'commands=["docker pull ${{ env.IMAGE }}:latest","docker rm -f claimverifier || true","docker run -d --name claimverifier --restart unless-stopped --env-file /home/ec2-user/app.env -p 8000:8000 ${{ env.IMAGE }}:latest","for i in $(seq 1 24); do curl -fs localhost:8000/health && exit 0; sleep 5; done; exit 1"]' \
+            --query Command.CommandId --output text)
+          echo "SSM command: $cmd_id"
+
+          status=Pending
+          for i in $(seq 1 60); do
+            sleep 10
+            status=$(aws ssm get-command-invocation --command-id "$cmd_id" --instance-id "$INSTANCE_ID" --query Status --output text 2>/dev/null || echo Pending)
+            echo "status: $status"
+            case "$status" in
+              Pending|InProgress|Delayed) ;;
+              *) break ;;
+            esac
+          done
+
+          aws ssm get-command-invocation --command-id "$cmd_id" --instance-id "$INSTANCE_ID" --query '[StandardOutputContent,StandardErrorContent]' --output text || true
+          [ "$status" = "Success" ]
