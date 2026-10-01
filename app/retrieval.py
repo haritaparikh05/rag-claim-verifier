@@ -22,16 +22,32 @@ def get_model() -> SentenceTransformer:
     return _model
 
 
-def get_db_connection():
+def get_db_connection(connect_timeout: int | None = None):
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
         port=os.getenv("DB_PORT", "5432"),
         dbname=os.getenv("DB_NAME", "claimverifier"),
         user=os.getenv("DB_USER", "claimverifier"),
         password=os.getenv("DB_PASSWORD", "claimverifier"),
+        connect_timeout=connect_timeout,
     )
     register_vector(conn)
     return conn
+
+
+def check_database(timeout: int = 2) -> bool:
+    """True if the database accepts a connection and answers a query within `timeout` seconds."""
+    try:
+        conn = get_db_connection(connect_timeout=timeout)
+        try:
+            with conn.cursor() as cur:
+                cur.execute("SELECT 1")
+                cur.fetchone()
+        finally:
+            conn.close()
+        return True
+    except psycopg2.Error:
+        return False
 
 
 def retrieve_chunks(product_id: str, claim: str, top_k: int = DEFAULT_TOP_K) -> list[dict]:
