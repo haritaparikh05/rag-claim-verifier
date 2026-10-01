@@ -7,8 +7,24 @@ on:
 
 jobs:
   lint-and-test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_DB: claimverifier
+          POSTGRES_USER: claimverifier
+          POSTGRES_PASSWORD: claimverifier
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U claimverifier"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
     steps:
       - uses: actions/checkout@v4
 
@@ -26,6 +42,19 @@ jobs:
         run: |
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
+
+      - name: Cache embedding model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-all-MiniLM-L6-v2
+
+      - name: Create database schema
+        run: |
+          python -c "import psycopg2; c = psycopg2.connect(host='localhost', dbname='claimverifier', user='claimverifier', password='claimverifier'); c.autocommit = True; c.cursor().execute(open('docker/init.sql').read())"
+
+      - name: Ingest product documents
+        run: python -m ingestion.ingest
 
       - name: Test
         run: pytest
