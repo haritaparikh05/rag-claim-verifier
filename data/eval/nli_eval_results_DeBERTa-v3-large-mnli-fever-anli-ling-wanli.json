@@ -1,0 +1,300 @@
+{
+  "model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "decision_threshold": 0.5,
+  "task": "product",
+  "seed": null,
+  "mean_latency_ms": 9232.5,
+  "results": [
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "waterproof to 1 meter for 30 minutes",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.981,
+      "cited_passage": "IPX8\n>1 m\n30 minutes\n= 80-100%\n= 60-80%\n= 40-60%\n= 20-40%\n= 10-20%\n= 1-10%\n2X\n1X",
+      "latency_ms": 9007.8,
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "operates for 100 hours on high brightness",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9941,
+      "cited_passage": "DIMMING\nATT\u00c9NUATION\nTH\n2S\nS.O.S",
+      "latency_ms": 9299.4,
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "includes a carrying case",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9907,
+      "cited_passage": "YOUR BAG\nLoading...\nAdd $99.00 more to qualify for free Shipping!\nSubtotal\n$0.00",
+      "latency_ms": 1131.8,
+      "match": false
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "IP67 waterproof and dustproof",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9961,
+      "cited_passage": "lip 6 is IP67 waterproof and dustproof, so you can bring your\nspeaker anywhere.\n12 Hours of Playtime\nDon\u2019t sweat the small stuff like charging your battery. JBL Flip 6 gives you up to 12 hours of\nplaytime on a single charge.\nBold design\nBold audio meets bold design. Big-sounding yet easy to carry, the design fits any personal\nstyle. Stand it vertical or horizontal and choose from a variety of vibrant colors.\nCrank up the fun with PartyBoost\nPartyBoost allows you to pair two JBL PartyBoost-compatible speakers together for stereo\nsound or link multiple JBL PartyBoost-compatible speakers to truly pump up your party.\nJBL Portable app\nMaximize your audio experience with the JBL Portable app. Get updates and product support",
+      "latency_ms": 8031.9,
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "24 hours of battery life",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.7808,
+      "cited_passage": "packaged\nin a recyclable paper-based box, including the inner tray. The plastic hangtag is over 90%\nrecycled and the exterior is printed with soy ink.\nWhat\u2019s in the box:\n1 x JBL Flip 6\n1 x Type C USB cable\n1 x Quick Start Guide\n1 x Warranty Card/Safety Sheet\nTechnical Specifications\nGeneral specification\nModel No.: JBL Flip 6\nTransducers: 45 x 80mm woofer/\n1.75 x 3\", 16mm tweeter/0.6\"\nOutput power: 20W RMS for woofer,\n10W RMS for tweeter\nFrequency response: 63Hz \u2013 20kHz\nSignal-to-noise ratio: >80dB\nBattery type: Li-ion polymer 17.28Wh\n(equivalent to 3.6V/4800mAh)\nBattery charge time: 2.5 hours (5V/3A)\nMusic play time: up to 12 hours (dependent\non volume level and audio content)\nCable type: USB \u2013 C charging cable\nCable length: 1.2m/47.2\"\nMaximum operation temperature: 45\u00b0C",
+      "latency_ms": 8009.1,
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "has a built-in flashlight",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.5801,
+      "cited_passage": "",
+      "latency_ms": 8203.0,
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "BPA-free",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9985,
+      "cited_passage": ".41\nWide Mouth Easy Sipper\n$\n3.41\nAdd to Cart\nFoldable Bottle Sleeve\n$\n14.99\nAdd to Cart\nDescription\nOur iconic 32oz Wide Mouth water bottles are perfect for everyday use, outdoor sports like hiking, camping, and climbing, and more. The wide opening fits most filtration devices and ice cubes, and the design is durable and versatile. Thoughtfully made from Tritan Renew. BPA/BPS-Free. Made in the USA. Leakproof and Dishwasher-Safe.\nFeatures\nBPA/BPS Free\nSo you can drink water that's safe and tastes great.\nBuilt to Last\nOur durable goods are made to last a lifetime.\nDishwasher Safe\nSafe to put in the dishwasher and easy to clean.\nFits Filtration Devices\nFits most filtration units for clean water in a pinch.\nFits Ice Cubes",
+      "latency_ms": 6518.1,
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "not safe to put in the dishwasher",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.999,
+      "cited_passage": ".41\nWide Mouth Easy Sipper\n$\n3.41\nAdd to Cart\nFoldable Bottle Sleeve\n$\n14.99\nAdd to Cart\nDescription\nOur iconic 32oz Wide Mouth water bottles are perfect for everyday use, outdoor sports like hiking, camping, and climbing, and more. The wide opening fits most filtration devices and ice cubes, and the design is durable and versatile. Thoughtfully made from Tritan Renew. BPA/BPS-Free. Made in the USA. Leakproof and Dishwasher-Safe.\nFeatures\nBPA/BPS Free\nSo you can drink water that's safe and tastes great.\nBuilt to Last\nOur durable goods are made to last a lifetime.\nDishwasher Safe\nSafe to put in the dishwasher and easy to clean.\nFits Filtration Devices\nFits most filtration units for clean water in a pinch.\nFits Ice Cubes",
+      "latency_ms": 9451.3,
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "includes a built-in compass",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9922,
+      "cited_passage": "marked\n*\nYour rating\nRate\u2026\nPerfect\nGood\nAverage\nNot that bad\nVery poor\nYour review\n*\nName\n*\nEmail\n*\nSave my name, email, and website in this browser for the next time I comment.\nYour Cart\nYou\u2019re $20.00 away from FREE shipping!\n$0\n$20\nYour cart is empty\nAre you hydrating enough?\nStart shopping",
+      "latency_ms": 10246.5,
+      "match": false
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "10000mAh capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9888,
+      "cited_passage": "- The two input ports may not be used at the same time. The USB-C input port has no output function.\n- Compatible with 12'' 2015 MacBook (USB-C cable required), iPhone XS / XS Max / XR, Android smartphones and tablets (including the Nexus 7), and other USB-charged devices.\nSpecs\nBattery Capacity\n10000 Milliamp Hours\nDimensions\n5.87 x 2.68 x 0.55 inches\nWeight\n7.5 ounces\nDownloads\nManual\nA1229-manual\n2020-02-12\nThe World's No. 1 Mobile Charging Brand*\n200\nMillion+\n200 Million + Global Customers\n146\nMarkets\nAvailable in 146 Markets\n14\nYears of Innovation\nPioneering in Charging Technology for 14 Years\n*Pay immediately or installments with Affirm. Rates from 0-36% APR. Payment options through Affirm are subject to an eligibility check and are provided by these lending partners:",
+      "latency_ms": 8676.2,
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "20000mAh capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9985,
+      "cited_passage": "OFF\n1\n/\n6\nAnker\n313\nPower Bank (PowerCore 10K)\n2187 reviews\n$25.99\nSave $4.00\nKey Features\nQuality Throughout\nSlim Size, Big Power\nVersatile Charging\nSuperior Safety\nSpecifications\nTotal Capacity:\n10,000mAh\nTotal number of ports:",
+      "latency_ms": 8700.0,
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "supports wireless charging",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.5862,
+      "cited_passage": "",
+      "latency_ms": 8734.6,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "sleeps 2 people",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9932,
+      "cited_passage": "Helix 2-Person Tent  | ALPS Mountaineering\nSkip to Content\nFree Shipping on all orders $99+\n800.344.2577\nMon - Fri, 8:00 am - 4:30 pm CT\nSign In\nSearch\nYou are currently in the order edit mode.\nLeave\nSkip to the end of the images gallery\nSkip to the beginning of the images gallery\nTents\nHelix 2-Person\n4\nreviews\nStarting at\n$299.99\nGrouped product items\nProduct Name\nQty\nHelix 2 Tent\n$299.99\nIn stock\nHelix 2 Footprint\n$39.99\nIn stock\nAdd to Cart\nThank you!\nSomething went wrong\nIn stock\nAdd to Wishlist\nOur Guarantee\nOur feature-driven products are designed and marketed by a proud team of men and women who are passionate about the outdoors. Our Tried & True brand promise is to offer high-quality, performance-driven gear backed by our expert customer support team.\nSimple Returns",
+      "latency_ms": 6813.2,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "the rainfly has a 500mm waterproof coating",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.5249,
+      "cited_passage": ".2577. Online shipping prices do not apply to parts ordered by phone.\nFeatures\nSpecs\nProduct Details\nReviews\n7\nTent Features\nFree-standing 3 pole frame with 7000 series aluminum poles\nEasy assembly with lightweight aluminum hardware and pole clips that quickly snap over the tent poles\n20D 380T nylon ripstop fly with 2000 mm silicone/pu coating resists UV damage and stays taut\n20D 380T nylon ripstop floor with 3000 mm silicone/pu coating\nFactory-sealed fly and floor seams provide the best weather protection\nFull-coverage fly offers maximum protection\nExtra guy-outs on the fly to stabilize the tent in bad weather\nTwo vestibules for gear storage and extra weather protection\nWeatherproof fly attached at the corners for maximum adjustability and protection",
+      "latency_ms": 7272.7,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "comes with a lifetime warranty",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.5938,
+      "cited_passage": "",
+      "latency_ms": 7012.3,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "has a 6-quart capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.853,
+      "cited_passage": "CONTENTS\nImportant safeguards 2\nWhat\u2019s in the box 7\nUsing your Duo 9\nInitial set up 14\nPressure cooking 18\nSaut\u00e9ing 25\nSlow cooking 27\nYogurt making 28\nKeep warm 30\nCleaning 31\nLearn more 33\nWarranty 34\n2\nUser Manual\nRead all instructions before using and only use this Instant Pot\nDuo as described in this manual.\nWhen using electrical appliances, basic safety precautions should\nalways be followed to reduce the risk of fire, electric shock, personal\ninjury or property damage.\nPlacement\n\u2022 DO place the appliance on a countertop only. Always operate the\nappliance on a stable, non-combustible, level surface.\n\u2022 DO make sure all parts are dry and free of food debris before placing\nthe cooking pot on the cooker base.\n\u2022 DO NOT place the appliance on or close to a hot gas or electric",
+      "latency_ms": 7584.3,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "has a 10-quart capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9795,
+      "cited_passage": "gurt to cool.\n7. Place in fridge for 12\u201324 hours to develop flavors.\nHow much to make?\nInstant Pot\n\u00ae\nSize Minimum Milk Volume Maximum Milk Volume\n6 Quarts / 5.7 Liters 4 Cups\n(32 oz / 1000 mL)\n4 Quarts\n(128 oz / 3.8 L)\n30\nUser Manual",
+      "latency_ms": 7340.4,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "is compatible with induction cooktops",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "supported",
+      "confidence": 0.916,
+      "cited_passage": "CONTENTS\nImportant safeguards 2\nWhat\u2019s in the box 7\nUsing your Duo 9\nInitial set up 14\nPressure cooking 18\nSaut\u00e9ing 25\nSlow cooking 27\nYogurt making 28\nKeep warm 30\nCleaning 31\nLearn more 33\nWarranty 34\n2\nUser Manual\nRead all instructions before using and only use this Instant Pot\nDuo as described in this manual.\nWhen using electrical appliances, basic safety precautions should\nalways be followed to reduce the risk of fire, electric shock, personal\ninjury or property damage.\nPlacement\n\u2022 DO place the appliance on a countertop only. Always operate the\nappliance on a stable, non-combustible, level surface.\n\u2022 DO make sure all parts are dry and free of food debris before placing\nthe cooking pot on the cooker base.\n\u2022 DO NOT place the appliance on or close to a hot gas or electric",
+      "latency_ms": 6182.3,
+      "match": false
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 1100-watt motor",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9985,
+      "cited_passage": "FEATURES:\n\u2022 1100-Watt Motor Base\n\u2022 Total Crushing Technology\n\u2022 XL 72 oz. Pitcher\n\u2022 Easy-Lock Lid with Built-In Pour Spout\n\u2022 Nutri Ninja Nutrient & Vitamin Extraction*\n\u2022 Nutri Ninja Cups with To-Go Lids\n\u2022 BPA Free & Dishwasher Safe\n\u2022 Cord Wrap\n*  Extract a drink containing vitamins and nutrients from fruits and vegetables.\nNOTE:  All jars, lids, and blade assemblies are dishwasher\nsafe. Place the lids and blade assemblies on the top rack\nonly. All jars, lids, and plastic components of the blade\nassemblies are BPA free.\nNOTE: The top flap of your box shows the select\naccessories that are included with your model.\n7\n8\nwww.ninjakitchen.com1.877 .646.5288\nBefore First Use\nCAUTION: Do not immerse the motor base in\nwater or any other liquid.\n1 Remove all packaging material and labels from the",
+      "latency_ms": 26953.0,
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 500-watt motor",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9829,
+      "cited_passage": "FEATURES:\n\u2022 1100-Watt Motor Base\n\u2022 Total Crushing Technology\n\u2022 XL 72 oz. Pitcher\n\u2022 Easy-Lock Lid with Built-In Pour Spout\n\u2022 Nutri Ninja Nutrient & Vitamin Extraction*\n\u2022 Nutri Ninja Cups with To-Go Lids\n\u2022 BPA Free & Dishwasher Safe\n\u2022 Cord Wrap\n*  Extract a drink containing vitamins and nutrients from fruits and vegetables.\nNOTE:  All jars, lids, and blade assemblies are dishwasher\nsafe. Place the lids and blade assemblies on the top rack\nonly. All jars, lids, and plastic components of the blade\nassemblies are BPA free.\nNOTE: The top flap of your box shows the select\naccessories that are included with your model.\n7\n8\nwww.ninjakitchen.com1.877 .646.5288\nBefore First Use\nCAUTION: Do not immerse the motor base in\nwater or any other liquid.\n1 Remove all packaging material and labels from the",
+      "latency_ms": 27713.4,
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "comes with a travel strap",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9133,
+      "cited_passage": "",
+      "latency_ms": 6616.5,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has a 4.1 liter capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9995,
+      "cited_passage": "ls\n\u2022 User manual: FSC certified paper\nCapacity\n\u2022 Pan (liter*): 4.1 L\n\u2022 Portions: 4\nCooking Functions\n\u2022 High air flow: \u2022 Fry, \u2022 Roast, \u2022 Grill, \u2022 Bake, \u2022 One-\npot cooking, \u2022 Stir-fry, \u2022 Saute, \u2022 Cook from frozen,\n\u2022 Reheat, \u2022 Defrost, \u2022 Keep warm, \u2022 Dehydrate, \u2022\nToast\n\u2022\n* Compared to fresh fries prepared in a Philips conventional fryer\n* *Compared to fat content of Chicken and pork prepared versus a\ndeep fat fr\nyer and wok frying.\n* **Available only in countries with a NutriU community\n* ***Energy cost of cooking one chicken breast (AF setting 160C no\nprehea\nt) or salmon filet (200C, no preheat) vs. using an A class oven.\nAverage percentage based on internal lab measurement with\nproducts HD9280, HD9650, HD9860, HD9270, HD9285, HD9252,\nHD9200, HD9255, HD9880. Results might vary per product.",
+      "latency_ms": 9575.1,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has an 8 liter capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9985,
+      "cited_passage": "ls\n\u2022 User manual: FSC certified paper\nCapacity\n\u2022 Pan (liter*): 4.1 L\n\u2022 Portions: 4\nCooking Functions\n\u2022 High air flow: \u2022 Fry, \u2022 Roast, \u2022 Grill, \u2022 Bake, \u2022 One-\npot cooking, \u2022 Stir-fry, \u2022 Saute, \u2022 Cook from frozen,\n\u2022 Reheat, \u2022 Defrost, \u2022 Keep warm, \u2022 Dehydrate, \u2022\nToast\n\u2022\n* Compared to fresh fries prepared in a Philips conventional fryer\n* *Compared to fat content of Chicken and pork prepared versus a\ndeep fat fr\nyer and wok frying.\n* **Available only in countries with a NutriU community\n* ***Energy cost of cooking one chicken breast (AF setting 160C no\nprehea\nt) or salmon filet (200C, no preheat) vs. using an A class oven.\nAverage percentage based on internal lab measurement with\nproducts HD9280, HD9650, HD9860, HD9270, HD9285, HD9252,\nHD9200, HD9255, HD9880. Results might vary per product.",
+      "latency_ms": 9420.2,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "includes a physical recipe book",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.5686,
+      "cited_passage": "",
+      "latency_ms": 9464.0,
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "reduces ambient noise by up to 90%",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.998,
+      "cited_passage": "OFF\nProducts\nScenarios\nSpecs\nsoundcore Life Q20 | Over-Ear Headphones with Hybrid ANC\nExperience Immersive Listening with Hybrid ANC and Hi-Res Audio\n6153 reviews\nColor\n$59.99\nFlexible installment payment options available.\nBulk Headphones, Earbuds, and Speakers for Business\nHi-Res Audio Certified\n: Custom oversized 40 mm dynamic drivers produce Hi-Res Audio\u2014a certification only awarded to audio devices capable of producing exceptional sound. Life Q20 active noise cancelling headphones reproduce your music with extended high frequencies that reach up to 40 kHz for extraordinary clarity and detail.\nReduce Ambient noises by up to 90%",
+      "latency_ms": 7189.6,
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "reduces ambient noise by up to 50%",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9976,
+      "cited_passage": "OFF\nProducts\nScenarios\nSpecs\nsoundcore Life Q20 | Over-Ear Headphones with Hybrid ANC\nExperience Immersive Listening with Hybrid ANC and Hi-Res Audio\n6153 reviews\nColor\n$59.99\nFlexible installment payment options available.\nBulk Headphones, Earbuds, and Speakers for Business\nHi-Res Audio Certified\n: Custom oversized 40 mm dynamic drivers produce Hi-Res Audio\u2014a certification only awarded to audio devices capable of producing exceptional sound. Life Q20 active noise cancelling headphones reproduce your music with extended high frequencies that reach up to 40 kHz for extraordinary clarity and detail.\nReduce Ambient noises by up to 90%",
+      "latency_ms": 7339.5,
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "is waterproof",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.541,
+      "cited_passage": "USA:\n1-800-988-7973\nMonday to Friday 9:00AM - 5:00PM (PT)\nservice@soundcore.com\nBuy on the soundcore Store\nFast, Free Shipping\n30-Day Money-Back Guarantee\nHassle-Free Warranty\nLifetime Customer Support\nBrand\nsoundcore's Story\nWhere to Buy\nProjectors\nNebula Projectors\n4K projectors\nOutdoor Projector\nLaser Projectors\nPortable Projectors\nHeadphones\nHeadphones\nOver Ear Headphones\nWorkout Headphones\nNoise Cancelling Headphones\nHeadphone Accessories\nEarbuds\nTrue Wireless Earbuds\nWaterproof Earbuds\nNoise cancelling Earbuds\nSport Earbuds\nWireless Earbuds for Android\nEarbuds for Small Ears\nSleep Earbuds\nOpen-Ear Earbuds\nClip-On Earbuds\nEarbuds Accessories\nSpeakers\nBluetooth Speakers\nParty Speakers\nPortable Speakers\nBass Speakers\nWaterproof Bluetooth Speakers\nOutdoor Speakers\nSupport\nSupport Center",
+      "latency_ms": 6792.1,
+      "match": false
+    }
+  ],
+  "metrics": {
+    "supported": {
+      "precision": 0.9,
+      "recall": 1.0,
+      "f1": 0.9473684210526316,
+      "support": 9
+    },
+    "contradicted": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571428571428571,
+      "support": 9
+    },
+    "unverifiable": {
+      "precision": 1.0,
+      "recall": 0.5555555555555556,
+      "f1": 0.7142857142857143,
+      "support": 9
+    },
+    "overall_accuracy": 0.8518518518518519
+  }
+}

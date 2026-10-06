@@ -1,0 +1,302 @@
+{
+  "model": "cross-encoder/nli-deberta-v3-base",
+  "decision_threshold": 0.5,
+  "task": "product",
+  "seed": null,
+  "set": "holdout",
+  "judge_top_k": 8,
+  "mean_latency_ms": 452.3,
+  "results": [
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "has a maximum output of 400 lumens",
+      "expected_verdict": "supported",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9983,
+      "cited_passage": "LOW\nBas 6 lm 12 m 200 h 0 h",
+      "latency_ms": 1500.6,
+      "match": false
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "is made in the USA",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9973,
+      "cited_passage": "ADVERTENCIAS\nde 12 a\u00f1os.\nGARANT\u00cdA LIMITADA\nRoHS 2011/65/EU.\nINSTRU\u00c7\u00d5ES DE USO",
+      "latency_ms": 249.1,
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "has a built-in whistle",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9524,
+      "cited_passage": "",
+      "latency_ms": 163.4,
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "charges through a USB-C cable",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.7426,
+      "cited_passage": "packaged\nin a recyclable paper-based box, including the inner tray. The plastic hangtag is over 90%\nrecycled and the exterior is printed with soy ink.\nWhat\u2019s in the box:\n1 x JBL Flip 6\n1 x Type C USB cable\n1 x Quick Start Guide\n1 x Warranty Card/Safety Sheet\nTechnical Specifications\nGeneral specification\nModel No.: JBL Flip 6\nTransducers: 45 x 80mm woofer/\n1.75 x 3\", 16mm tweeter/0.6\"\nOutput power: 20W RMS for woofer,\n10W RMS for tweeter\nFrequency response: 63Hz \u2013 20kHz\nSignal-to-noise ratio: >80dB\nBattery type: Li-ion polymer 17.28Wh\n(equivalent to 3.6V/4800mAh)\nBattery charge time: 2.5 hours (5V/3A)\nMusic play time: up to 12 hours (dependent\non volume level and audio content)\nCable type: USB \u2013 C charging cable\nCable length: 1.2m/47.2\"\nMaximum operation temperature: 45\u00b0C",
+      "latency_ms": 395.0,
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "weighs more than 1 kilogram",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9516,
+      "cited_passage": "",
+      "latency_ms": 360.2,
+      "match": false
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "has a built-in FM radio",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.929,
+      "cited_passage": "ent)\nCable type: USB \u2013 C charging cable\nCable length: 1.2m/47.2\"\nMaximum operation temperature: 45\u00b0C\nWireless Specification\nBluetooth\u00ae version: 5.1\nBluetooth\u00ae profile: A2DP 1.3, AVRCP 1.6\nBluetooth\u00ae transmitter frequency range:\n2400MHz \u2013 2483.5MHz\nBluetooth\u00ae transmitter power:\n\u226410dBm (EIRP)\nBluetooth\u00ae transmitter modulation:\nGFSK, \u03c0/4 DQPSK, 8DPSK\n2.4GHz SRD frequency range:\n2407MHz \u2013 2475MHz\nSRD transmitter power: <10dBm (EIRP)\nProduct Dimensions\nDimensions (W x H x D):\n178 x 68 x 72mm/7.0 x 2.6 x 2.8\"\nNet weight: 0.55kg/1.21 lbs\nPackaging Dimensions\nDimensions (W x H x D):\n216 x 106 x 99mm/8.5 x 4.2 x 3.9\"\nGross weight: 0.92kg/2.05 lbs\n\u00a9 2021 HARMAN International Industries, Incorporated. All rights reserved. JBL is a trademark of HARMAN International",
+      "latency_ms": 366.4,
+      "match": false
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "is made in the USA",
+      "expected_verdict": "supported",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9628,
+      "cited_passage": "USA\nYou Might Also Like:\n32oz Narrow Mouth Bottle\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\n$\n16.99\nMarmalade\n32oz Narrow Mouth Bottle\n$\n16.99\nAdd to Cart\nCustomize\nNew!\n16oz Wide Mouth Bottle\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\n$\n14.99\nPastel Green\n16oz Wide Mouth Bottle\n$\n14.99\nAdd to Cart\nCustomize\nAverage Rating: 4.62\nRated\n4.62\nout of 5\nWrite a review\nRated\n5\nout of 5\nDouglas",
+      "latency_ms": 462.7,
+      "match": false
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "is made of stainless steel",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.6546,
+      "cited_passage": "ers shortly after and have never thrown one away due to it being broken or leaking. 10/10 recommend.\nRated\n2\nout of 5\nAniyra Chan\nI adored this bottle, but it barely lasted a month.\nDropped it onto a hard surface but from a very small height, no higher than 3ft, and it has a huge crack in it. Sadly no longer useable.\nRated\n5\nout of 5\nSarah\nI\u2019ve had my Nalgene for 11 years now and still use it regularly. It\u2019s traveled the world with me, gone on camping trips, and now gets thrown in my work bag or diaper bag for everyday use. I love that it never leaks and is so durable.\nRated\n3\nout of 5\neric swenson\nI wish cap color was an option as well.\nRated\n5\nout of 5\nStephanie",
+      "latency_ms": 410.6,
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "keeps drinks cold for 24 hours",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.8103,
+      "cited_passage": "ers shortly after and have never thrown one away due to it being broken or leaking. 10/10 recommend.\nRated\n2\nout of 5\nAniyra Chan\nI adored this bottle, but it barely lasted a month.\nDropped it onto a hard surface but from a very small height, no higher than 3ft, and it has a huge crack in it. Sadly no longer useable.\nRated\n5\nout of 5\nSarah\nI\u2019ve had my Nalgene for 11 years now and still use it regularly. It\u2019s traveled the world with me, gone on camping trips, and now gets thrown in my work bag or diaper bag for everyday use. I love that it never leaks and is so durable.\nRated\n3\nout of 5\neric swenson\nI wish cap color was an option as well.\nRated\n5\nout of 5\nStephanie",
+      "latency_ms": 392.1,
+      "match": false
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "can be recharged through a Micro-USB cable",
+      "expected_verdict": "supported",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.5299,
+      "cited_passage": "",
+      "latency_ms": 391.5,
+      "match": false
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "supports Qualcomm Quick Charge",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9992,
+      "cited_passage": "prevention, and many more advanced safety features to give you peace of mind.\nTrickle-Charging Mode\nProvides safe and optimized charging to low-power devices such as Bluetooth earphones and speakers. To activate, press the power button twice or hold for 2 seconds until the LED indicator turns green.\nExclusive Technology\nAnker's exclusive PowerIQ and VoltageBoost technologies combine to ensure the fastest possible charge up to 2.4 A. Does not support Qualcomm Quick Charge.\nRecharge Your Way\nChoose between USB-C or Micro USB recharging.\nUniversal Compatibility\nWorks seamlessly with a wide range of USB-C phones, tablets, and more.\nThe Anker Advantage\nJoin our family of over 50 million happy users, and change the way you charge.\nAnker 313 Power Bank (PowerCore 10K)",
+      "latency_ms": 310.7,
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "is approved for carrying on airplanes",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9724,
+      "cited_passage": "",
+      "latency_ms": 312.8,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "has two vestibules",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9617,
+      "cited_passage": "WARNING:\nCalifornia's Proposition 65\nCalifornia Proposition 65 Warning\n\u26a0\ufe0f WARNING: Cancer and Reproductive Harm -\nwww.P65Warnings.ca.gov\nYou May Also Like\nTent Footprints\nAs low as\n$7.99\nRegular Price\n$39.99\n0\nAdd to Wishlist\nIn stock\nAdd to Cart\nThank you!\nSomething went wrong\n6\" Tri-Stake\n$2.99\n0\nAdd to Wishlist\nIn stock\nAdd to Cart\nThank you!\nSomething went wrong\nHex 2-Person\nStarting at\n$299.99\n2\nreviews\nAdd to Wishlist\nIn stock\nAdd To Cart\nThank you!\nSomething went wrong\nZephyr 2-Person\nStarting at\n$199.99\n8\nreviews\nAdd to Wishlist\nIn stock\nAdd To Cart\nThank you!\nSomething went wrong",
+      "latency_ms": 321.8,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "weighs over 10 pounds in total",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9996,
+      "cited_passage": "12 oz.\nTotal Weight\n4 lbs. 2 oz.\nPacked Size\n1'6\" L x 6\" D\nPole Diameter\n8.5mm AL\nHelix 2 Footprint\nDimensions\n6'8\" L x 4'2\" W\nWeight\n8.8 oz.\nFabric\nPolyester\nCorner Attachment\nAluminum Tab Corner\nThe Helix Tent is perfect for any night on the trail. The ultralight 20D ripstop nylon fly and floor balance durability and weight while maintaining superior waterproofing to ensure that you stay dry even in the wettest conditions.",
+      "latency_ms": 316.8,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "has a built-in LED light",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9863,
+      "cited_passage": "",
+      "latency_ms": 320.8,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "the inner cooking pot can be washed in a dishwasher",
+      "expected_verdict": "supported",
+      "actual_verdict": "contradicted",
+      "confidence": 0.6348,
+      "cited_passage": "INITIAL SET UP\nClean before use\n1. Wash the inner cooking pot with hot water and soap. Rinse and use\na soft cloth to dry the outside. Or you can wash the inner cooking\npot in the dishwasher .\n2. Wipe the heating element inside the cooker base with a soft cloth\nto ensure there are no stray packaging particles.\nSetting up the condensation collector\nThe condensation collector sits at the back of the cooker base and\naccumulates overflow moisture from the condensation rim. It should be\ninstalled before cooking, then emptied and rinsed out after each use.\nInstall the condensation collector\n\u2022 Align the grooves on the condensation collector with the tabs on\nthe back of the cooker base and slide the condensation collector\ninto place.\n15\nUser Manual\nRemove the condensation collector",
+      "latency_ms": 323.7,
+      "match": false
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "runs on 240 volt power",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9991,
+      "cited_passage": "lure to follow these instructions may\nresult in electric shock.\nTo protect against electrical shock:\n\u2022 To disconnect, select Cancel, then remove plug from power source.\nAlways unplug when not in use, as well as before adding or removing\nparts or accessories, and before cleaning. To unplug, grasp the plug\nand pull from the outlet. NEVER pull from the power cord.\n\u2022 DO regularly inspect the appliance and power cord.\n\u2022 DO NOT operate the appliance if the power cord or plug is damaged,\nor after the appliance malfunctions or is dropped or damaged in\nany manner. For assistance, contact Customer Care by email at\nsupport@instanthome.\n\u2022 DO NOT attempt to repair, replace or modify components of the\nappliance, as this may cause electric shock, fire, personal injury",
+      "latency_ms": 323.3,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "connects to a smartphone app over Wi-Fi",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "supported",
+      "confidence": 0.8856,
+      "cited_passage": "place or modify components of the\nappliance, as this may cause electric shock, fire, personal injury\nand/or or property damage and will void the warranty.\n\u2022 DO NOT tamper with any of the safety mechanisms, as this may\nresult in personal injury or property damage.\n\u2022 DO NOT put liquid or food of any kind into cooker base without\nthe inner cooking pot.\n\u2022 DO NOT immerse power cord, plug or the appliance in water\nor other liquid.\n\u2022 DO NOT use the appliance in electrical systems other than\n120 V ~ 60 Hz for North America.\n\u2022 DO NOT clean the appliance by rinsing it under a faucet.",
+      "latency_ms": 341.3,
+      "match": false
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 72-ounce pitcher",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.8861,
+      "cited_passage": "TECHNICAL SPECIFICATIONS\nVoltage: 120V., 60Hz.\nPower: 1100 Watts\nPitcher Capacity: 72 oz.\nMax Liquid Capacity: 64 oz.\nNutri Ninja\u00ae Cup Capacity: 16 oz.\nContents\nGetting to Know Your Ninja Professional Blender & Nutri Ninja Cups .......................................5\nBefore First Use ..................................................................................................................7\nAssembly and Use of the Pitcher ..........................................................................................8\nAssembly and Use of the Nutri Ninja Cup ............................................................................10\nCare & Maintenance  ........................................................................................................ 11",
+      "latency_ms": 1141.5,
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "the Nutri Ninja cup holds 32 ounces",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9971,
+      "cited_passage": "TECHNICAL SPECIFICATIONS\nVoltage: 120V., 60Hz.\nPower: 1100 Watts\nPitcher Capacity: 72 oz.\nMax Liquid Capacity: 64 oz.\nNutri Ninja\u00ae Cup Capacity: 16 oz.\nContents\nGetting to Know Your Ninja Professional Blender & Nutri Ninja Cups .......................................5\nBefore First Use ..................................................................................................................7\nAssembly and Use of the Pitcher ..........................................................................................8\nAssembly and Use of the Nutri Ninja Cup ............................................................................10\nCare & Maintenance  ........................................................................................................ 11",
+      "latency_ms": 1282.9,
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a built-in heating element for making soup",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9952,
+      "cited_passage": "isit our website, ninjakitchen.com, or\ncontact customer service at 1-877-646-5288.\nReplacement Parts\n*  When blending soups and sauces, make sure they\u2019re cooled to room temperature first. Ninja \u00ae containers are not intended for\nhot blending.\n** Extract a nutritious drink containing vitamin and nutrients from fruits and vegetables.\n14\nwww.ninjakitchen.com13\n1.877 .646.5288\nNotes",
+      "latency_ms": 326.6,
+      "match": false
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "comes with a 2-year worldwide guarantee",
+      "expected_verdict": "supported",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.7164,
+      "cited_passage": "",
+      "latency_ms": 431.1,
+      "match": false
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has a 2000 W power rating",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9965,
+      "cited_passage": "HD9252/91\nSpecifications\nAirfryer L\nRapid Air technology 4.1L, Black\nCountry of origin\n\u2022 Made in: China\nTechnical specifications\n\u2022 Power: 1400 W\n\u2022C o r d  l e n g t h :  0 . 8 m\nDesign\n\u2022C o l o r :  B l a c k\nWeight and dimensions\n\u2022 Dimensions of product (LxWxH):\n360x264x295 mm\n\u2022 Weight of product: 4.55 kg\nGeneral specifications\n\u2022 Product features: Automatic shut-off, Cool wall\nexterior, Dishwasher safe, On/off switch, Ready\nsignal, Temperature control, Power-on light,\nQuickclean, LED display, Patented Rapid Air, Time\ncontrol\nDesign and finishing\n\u2022 Material of main body: Plastic\nService\n\u2022 2-year worldwide guarantee\nSustainability\n\u2022 Packaging: > 90% recycled materials\n\u2022 User manual: FSC certified paper\nCapacity\n\u2022 Pan (liter*): 4.1 L\n\u2022 Portions: 4\nCooking Functions",
+      "latency_ms": 402.7,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "includes a built-in food probe thermometer",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9965,
+      "cited_passage": "",
+      "latency_ms": 407.4,
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "offers up to 40 hours of playtime with noise cancelling on",
+      "expected_verdict": "supported",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9915,
+      "cited_passage": "",
+      "latency_ms": 327.4,
+      "match": false
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "weighs over 500 grams",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9673,
+      "cited_passage": "",
+      "latency_ms": 305.7,
+      "match": false
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "can connect to two devices at the same time",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9845,
+      "cited_passage": "",
+      "latency_ms": 323.6,
+      "match": true
+    }
+  ],
+  "metrics": {
+    "supported": {
+      "precision": 0.75,
+      "recall": 0.3333333333333333,
+      "f1": 0.46153846153846156,
+      "support": 9
+    },
+    "contradicted": {
+      "precision": 0.5384615384615384,
+      "recall": 0.7777777777777778,
+      "f1": 0.6363636363636364,
+      "support": 9
+    },
+    "unverifiable": {
+      "precision": 0.5,
+      "recall": 0.5555555555555556,
+      "f1": 0.5263157894736842,
+      "support": 9
+    },
+    "overall_accuracy": 0.5555555555555556
+  }
+}

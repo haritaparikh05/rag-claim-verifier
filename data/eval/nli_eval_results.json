@@ -1,0 +1,300 @@
+{
+  "model": "cross-encoder/nli-deberta-v3-base",
+  "decision_threshold": 0.5,
+  "task": "product",
+  "seed": null,
+  "mean_latency_ms": 450.5,
+  "results": [
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "waterproof to 1 meter for 30 minutes",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9883,
+      "cited_passage": "IPX8\n>1 m\n30 minutes\n= 80-100%\n= 60-80%\n= 40-60%\n= 20-40%\n= 10-20%\n= 1-10%\n2X\n1X",
+      "latency_ms": 1580.6,
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "operates for 100 hours on high brightness",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9843,
+      "cited_passage": "SPOT LED HEADLAMP\nIMPORTANT:  Follow all instructions carefully and keep for future\nreference.\nBattery Life: Your battery life will vary depending on:\n\u2022 Brand and freshness of batteries\n\u2022 Length of time the headlamp has been off\n\u2022 Temperature\n\u2022 Settings used\n*ANSI FL-1 Standard: Runtime to 10% of initial output.\n**Reserve:  Additional time the lamp will produce usable light for low\nintensity activities (measured to .25 Lux @ 4 meters.)",
+      "latency_ms": 433.5,
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "includes a carrying case",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9995,
+      "cited_passage": "YOUR BAG\nLoading...\nAdd $99.00 more to qualify for free Shipping!\nSubtotal\n$0.00",
+      "latency_ms": 80.2,
+      "match": false
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "IP67 waterproof and dustproof",
+      "expected_verdict": "supported",
+      "actual_verdict": "contradicted",
+      "confidence": 0.6891,
+      "cited_passage": "ent)\nCable type: USB \u2013 C charging cable\nCable length: 1.2m/47.2\"\nMaximum operation temperature: 45\u00b0C\nWireless Specification\nBluetooth\u00ae version: 5.1\nBluetooth\u00ae profile: A2DP 1.3, AVRCP 1.6\nBluetooth\u00ae transmitter frequency range:\n2400MHz \u2013 2483.5MHz\nBluetooth\u00ae transmitter power:\n\u226410dBm (EIRP)\nBluetooth\u00ae transmitter modulation:\nGFSK, \u03c0/4 DQPSK, 8DPSK\n2.4GHz SRD frequency range:\n2407MHz \u2013 2475MHz\nSRD transmitter power: <10dBm (EIRP)\nProduct Dimensions\nDimensions (W x H x D):\n178 x 68 x 72mm/7.0 x 2.6 x 2.8\"\nNet weight: 0.55kg/1.21 lbs\nPackaging Dimensions\nDimensions (W x H x D):\n216 x 106 x 99mm/8.5 x 4.2 x 3.9\"\nGross weight: 0.92kg/2.05 lbs\n\u00a9 2021 HARMAN International Industries, Incorporated. All rights reserved. JBL is a trademark of HARMAN International",
+      "latency_ms": 376.5,
+      "match": false
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "24 hours of battery life",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9093,
+      "cited_passage": "Features\nLouder, more powerful sound\nIP67 waterproof and dustproof\n12 Hours of Playtime\nBold design\nCrank up the fun with PartyBoost\nJBL Portable app\nUSB charging protection\nWireless Bluetooth streaming\nEco-friendly packaging\nBold sound for every adventure.\nYour adventure. Your soundtrack. The bold new JBL Flip 6 delivers powerful JBL Original\nPro Sound with exceptional clarity thanks to its 2-way speaker system consisting of an\noptimized racetrack-shaped driver, separate tweeter, and dual pumping bass radiators.\nThis big-sounding, yet easy to carry speaker is waterproof and dustproof, so you can take\nit anywhere in any weather. And with 12 hours of battery life, you can party \u2018til the sun\ngoes down\u2014or comes up\u2014wherever the music moves you. Use PartyBoost to link multiple",
+      "latency_ms": 356.0,
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "has a built-in flashlight",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.6016,
+      "cited_passage": "ent)\nCable type: USB \u2013 C charging cable\nCable length: 1.2m/47.2\"\nMaximum operation temperature: 45\u00b0C\nWireless Specification\nBluetooth\u00ae version: 5.1\nBluetooth\u00ae profile: A2DP 1.3, AVRCP 1.6\nBluetooth\u00ae transmitter frequency range:\n2400MHz \u2013 2483.5MHz\nBluetooth\u00ae transmitter power:\n\u226410dBm (EIRP)\nBluetooth\u00ae transmitter modulation:\nGFSK, \u03c0/4 DQPSK, 8DPSK\n2.4GHz SRD frequency range:\n2407MHz \u2013 2475MHz\nSRD transmitter power: <10dBm (EIRP)\nProduct Dimensions\nDimensions (W x H x D):\n178 x 68 x 72mm/7.0 x 2.6 x 2.8\"\nNet weight: 0.55kg/1.21 lbs\nPackaging Dimensions\nDimensions (W x H x D):\n216 x 106 x 99mm/8.5 x 4.2 x 3.9\"\nGross weight: 0.92kg/2.05 lbs\n\u00a9 2021 HARMAN International Industries, Incorporated. All rights reserved. JBL is a trademark of HARMAN International",
+      "latency_ms": 364.2,
+      "match": false
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "BPA-free",
+      "expected_verdict": "supported",
+      "actual_verdict": "contradicted",
+      "confidence": 0.6987,
+      "cited_passage": "ers shortly after and have never thrown one away due to it being broken or leaking. 10/10 recommend.\nRated\n2\nout of 5\nAniyra Chan\nI adored this bottle, but it barely lasted a month.\nDropped it onto a hard surface but from a very small height, no higher than 3ft, and it has a huge crack in it. Sadly no longer useable.\nRated\n5\nout of 5\nSarah\nI\u2019ve had my Nalgene for 11 years now and still use it regularly. It\u2019s traveled the world with me, gone on camping trips, and now gets thrown in my work bag or diaper bag for everyday use. I love that it never leaks and is so durable.\nRated\n3\nout of 5\neric swenson\nI wish cap color was an option as well.\nRated\n5\nout of 5\nStephanie",
+      "latency_ms": 320.0,
+      "match": false
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "not safe to put in the dishwasher",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9679,
+      "cited_passage": "ers shortly after and have never thrown one away due to it being broken or leaking. 10/10 recommend.\nRated\n2\nout of 5\nAniyra Chan\nI adored this bottle, but it barely lasted a month.\nDropped it onto a hard surface but from a very small height, no higher than 3ft, and it has a huge crack in it. Sadly no longer useable.\nRated\n5\nout of 5\nSarah\nI\u2019ve had my Nalgene for 11 years now and still use it regularly. It\u2019s traveled the world with me, gone on camping trips, and now gets thrown in my work bag or diaper bag for everyday use. I love that it never leaks and is so durable.\nRated\n3\nout of 5\neric swenson\nI wish cap color was an option as well.\nRated\n5\nout of 5\nStephanie",
+      "latency_ms": 409.2,
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "includes a built-in compass",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9985,
+      "cited_passage": "marked\n*\nYour rating\nRate\u2026\nPerfect\nGood\nAverage\nNot that bad\nVery poor\nYour review\n*\nName\n*\nEmail\n*\nSave my name, email, and website in this browser for the next time I comment.\nYour Cart\nYou\u2019re $20.00 away from FREE shipping!\n$0\n$20\nYour cart is empty\nAre you hydrating enough?\nStart shopping",
+      "latency_ms": 448.6,
+      "match": false
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "10000mAh capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.7704,
+      "cited_passage": "herapy\n\"Anker Nano packs a tremendous amount of power in a super compact package.\"\nJonathan Morrison\n\"There's no reason not to upgrade to the faster charging Anker Nano which costs less while still charging 3x faster.\"\nJerryRigEverything\n\"Anker Nano Pro will work flawlessly with your iPhone or other devices.\"\nZolloTech\n\"Anker Nano II can truly be one charger to rule them all.\"\nUnbox Therapy\n\"Anker Nano packs a tremendous amount of power in a super compact package.\"\nJonathan Morrison\n\"There's no reason not to upgrade to the faster charging Anker Nano which costs less while still charging 3x faster.\"\nJerryRigEverything\n\"Anker Nano Pro will work flawlessly with your iPhone or other devices.\"\nZolloTech\nHome\n/\n/\nAnker\n313\nPower Bank (PowerCore 10K)\nSelect Your Country/Region\nNorth America",
+      "latency_ms": 386.4,
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "20000mAh capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9983,
+      "cited_passage": "OFF\n1\n/\n6\nAnker\n313\nPower Bank (PowerCore 10K)\n2187 reviews\n$25.99\nSave $4.00\nKey Features\nQuality Throughout\nSlim Size, Big Power\nVersatile Charging\nSuperior Safety\nSpecifications\nTotal Capacity:\n10,000mAh\nTotal number of ports:",
+      "latency_ms": 389.8,
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "supports wireless charging",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9966,
+      "cited_passage": "USB-C\n1",
+      "latency_ms": 382.0,
+      "match": false
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "sleeps 2 people",
+      "expected_verdict": "supported",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9915,
+      "cited_passage": "elix 2 Footprint\n5\n/ 5\n5 stars\n7\n4 stars\n0\n3 stars\n0\n2 stars\n0\n1 star\n0\nAdd Review\nYou're reviewing:\nHelix 2-Person\nYour rating:\nSelect your rating\n1 star\n2 stars\n3 stars\n4 stars\n5 stars\nNickname:\nSummary:\nReview:\nSubmit Review",
+      "latency_ms": 320.3,
+      "match": false
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "the rainfly has a 500mm waterproof coating",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9982,
+      "cited_passage": ".2577. Online shipping prices do not apply to parts ordered by phone.\nFeatures\nSpecs\nProduct Details\nReviews\n7\nTent Features\nFree-standing 3 pole frame with 7000 series aluminum poles\nEasy assembly with lightweight aluminum hardware and pole clips that quickly snap over the tent poles\n20D 380T nylon ripstop fly with 2000 mm silicone/pu coating resists UV damage and stays taut\n20D 380T nylon ripstop floor with 3000 mm silicone/pu coating\nFactory-sealed fly and floor seams provide the best weather protection\nFull-coverage fly offers maximum protection\nExtra guy-outs on the fly to stabilize the tent in bad weather\nTwo vestibules for gear storage and extra weather protection\nWeatherproof fly attached at the corners for maximum adjustability and protection",
+      "latency_ms": 324.2,
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "comes with a lifetime warranty",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9955,
+      "cited_passage": "",
+      "latency_ms": 317.9,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "has a 6-quart capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9045,
+      "cited_passage": "gurt to cool.\n7. Place in fridge for 12\u201324 hours to develop flavors.\nHow much to make?\nInstant Pot\n\u00ae\nSize Minimum Milk Volume Maximum Milk Volume\n6 Quarts / 5.7 Liters 4 Cups\n(32 oz / 1000 mL)\n4 Quarts\n(128 oz / 3.8 L)\n30\nUser Manual",
+      "latency_ms": 343.8,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "has a 10-quart capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9978,
+      "cited_passage": "gurt to cool.\n7. Place in fridge for 12\u201324 hours to develop flavors.\nHow much to make?\nInstant Pot\n\u00ae\nSize Minimum Milk Volume Maximum Milk Volume\n6 Quarts / 5.7 Liters 4 Cups\n(32 oz / 1000 mL)\n4 Quarts\n(128 oz / 3.8 L)\n30\nUser Manual",
+      "latency_ms": 332.1,
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "is compatible with induction cooktops",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9947,
+      "cited_passage": "",
+      "latency_ms": 282.9,
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 1100-watt motor",
+      "expected_verdict": "supported",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9279,
+      "cited_passage": "",
+      "latency_ms": 1128.9,
+      "match": false
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 500-watt motor",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9986,
+      "cited_passage": "FEATURES:\n\u2022 1100-Watt Motor Base\n\u2022 Total Crushing Technology\n\u2022 XL 72 oz. Pitcher\n\u2022 Easy-Lock Lid with Built-In Pour Spout\n\u2022 Nutri Ninja Nutrient & Vitamin Extraction*\n\u2022 Nutri Ninja Cups with To-Go Lids\n\u2022 BPA Free & Dishwasher Safe\n\u2022 Cord Wrap\n*  Extract a drink containing vitamins and nutrients from fruits and vegetables.\nNOTE:  All jars, lids, and blade assemblies are dishwasher\nsafe. Place the lids and blade assemblies on the top rack\nonly. All jars, lids, and plastic components of the blade\nassemblies are BPA free.\nNOTE: The top flap of your box shows the select\naccessories that are included with your model.\n7\n8\nwww.ninjakitchen.com1.877 .646.5288\nBefore First Use\nCAUTION: Do not immerse the motor base in\nwater or any other liquid.\n1 Remove all packaging material and labels from the",
+      "latency_ms": 1037.4,
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "comes with a travel strap",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9977,
+      "cited_passage": "",
+      "latency_ms": 295.6,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has a 4.1 liter capacity",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 0.9884,
+      "cited_passage": "HD9252/91\nSpecifications\nAirfryer L\nRapid Air technology 4.1L, Black\nCountry of origin\n\u2022 Made in: China\nTechnical specifications\n\u2022 Power: 1400 W\n\u2022C o r d  l e n g t h :  0 . 8 m\nDesign\n\u2022C o l o r :  B l a c k\nWeight and dimensions\n\u2022 Dimensions of product (LxWxH):\n360x264x295 mm\n\u2022 Weight of product: 4.55 kg\nGeneral specifications\n\u2022 Product features: Automatic shut-off, Cool wall\nexterior, Dishwasher safe, On/off switch, Ready\nsignal, Temperature control, Power-on light,\nQuickclean, LED display, Patented Rapid Air, Time\ncontrol\nDesign and finishing\n\u2022 Material of main body: Plastic\nService\n\u2022 2-year worldwide guarantee\nSustainability\n\u2022 Packaging: > 90% recycled materials\n\u2022 User manual: FSC certified paper\nCapacity\n\u2022 Pan (liter*): 4.1 L\n\u2022 Portions: 4\nCooking Functions",
+      "latency_ms": 408.0,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has an 8 liter capacity",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 0.9967,
+      "cited_passage": "Philips Philips 3000 Series\nAirfryer L\nRapid Air technology\n4.1L\nBlack",
+      "latency_ms": 393.9,
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "includes a physical recipe book",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9967,
+      "cited_passage": "",
+      "latency_ms": 533.5,
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "reduces ambient noise by up to 90%",
+      "expected_verdict": "supported",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9975,
+      "cited_passage": "",
+      "latency_ms": 312.7,
+      "match": false
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "reduces ambient noise by up to 50%",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.58,
+      "cited_passage": "",
+      "latency_ms": 307.2,
+      "match": false
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "is waterproof",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 0.9718,
+      "cited_passage": "",
+      "latency_ms": 298.5,
+      "match": true
+    }
+  ],
+  "metrics": {
+    "supported": {
+      "precision": 1.0,
+      "recall": 0.4444444444444444,
+      "f1": 0.6153846153846153,
+      "support": 9
+    },
+    "contradicted": {
+      "precision": 0.5333333333333333,
+      "recall": 0.8888888888888888,
+      "f1": 0.6666666666666667,
+      "support": 9
+    },
+    "unverifiable": {
+      "precision": 0.625,
+      "recall": 0.5555555555555556,
+      "f1": 0.5882352941176471,
+      "support": 9
+    },
+    "overall_accuracy": 0.6296296296296297
+  }
+}
