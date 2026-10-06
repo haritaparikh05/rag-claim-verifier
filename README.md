@@ -69,16 +69,36 @@ flowchart LR
 
 ## Results
 
-Two independent evaluations, deliberately kept separate because they test different things.
+Three evaluations, deliberately kept separate because they test different things. All numbers below are for the Gemini judge that the app uses.
 
 | Evaluation | What it tests | Result |
 |---|---|---|
-| Hand-verified product set (`eval/run_eval.py`, 27 cases) | The full pipeline (retrieval + verdict) against this project's real documents: one true, one false and one unverifiable claim per product | **27 / 27 (100%)** |
+| Dev set (`eval/run_eval.py`, 27 cases) | The full pipeline (retrieval + verdict) against this project's real documents: one true, one false and one unverifiable claim per product. The prompt rules were developed against these cases. | **27 / 27 (100%)** |
+| Held-out set (`eval/run_eval.py --set holdout`, 27 fresh cases) | The same pipeline on claims written after the prompt was fixed. Never used to change any prompt or rule. | **25 / 27 (92.6%)** |
 | FEVER benchmark sample (`eval/run_fever_eval.py`, 300 examples per run) | Whether the judge logic generalizes to independently labeled data (retrieval is bypassed, since FEVER claims are not about these products) | **75.67%, 75.33%, 74.33%** on three random samples (seeds 42, 777, 2024) |
 
 How to read these honestly:
-- The 27-case set is small and written by the project author, so it is a regression check for the pipeline, not a general accuracy claim.
+- The 100% on the dev set is a development result: the prompt rules were written from its failures. **The held-out 92.6% is the number to quote for unseen claims.**
+- Both product sets are small and written by the project author, so one case is worth 3.7 points. They are regression checks for the pipeline, not general accuracy claims.
+- The two held-out misses: for "is made in the USA" (the product page says "Country of Origin: China") the judge answered unverifiable, and for "has a built-in heating element for making soup" it cited "not intended for hot blending" as a contradiction, a stretch from a passage that does not address a heating element.
 - FEVER measures generic Wikipedia claims, so it is a transfer check of the judging logic, not product accuracy. Tuning stopped once changes were indistinguishable from run-to-run noise (about 1 point); a further change was only accepted if it held on a fresh, unseen seed.
+
+## LLM judge vs a dedicated NLI model
+
+As a side experiment, I compared the Gemini judge with two small NLI models (purpose-built entailment classifiers that run locally, with no API) on the same retrieved chunks. This is offline only; the deployed app does not use them.
+
+| Judge | Held-out product claims (27) | FEVER (3 samples of 300) | Time per example |
+|---|---|---|---|
+| Gemini (the app's judge) | **92.6%** | 74.3 to 75.7% | about 1 to 25 s |
+| NLI large | 81.5% | not evaluated (trained on FEVER) | 9.7 s on a laptop CPU |
+| NLI base | 55.6% | 64.7 to 65.7% | 0.45 s |
+
+- The LLM judge is more accurate, mostly because it is better at recognizing that a claim is simply not mentioned. NLI models tend to call an unrelated statement a contradiction.
+- The gap to the large NLI model is not statistically significant on 27 claims; the base model is clearly worse.
+- One improvement I decided on in advance (scoring only the top 3 chunks) did not help, and I report it as a negative result instead of tuning further.
+- The experiment also showed that the 100% on the original dev set was optimistic, which is why the fresh held-out set exists.
+
+Full method, tables, caveats and reproduce commands: [docs/judge_comparison.md](docs/judge_comparison.md).
 
 ## Design decisions
 
@@ -142,10 +162,13 @@ Every response carries an `x-request-id` header (an incoming one is honored), an
 ## Tests and evaluation
 
 ```bash
-./venv/bin/python -m pytest                 # 33 tests
-./venv/bin/python -m eval.run_eval          # the 27-case product eval (uses the Gemini API)
+./venv/bin/python -m pytest                 # 41 tests
+./venv/bin/python -m eval.run_eval                   # the 27-case dev set (uses the Gemini API)
+./venv/bin/python -m eval.run_eval --set holdout     # the 27 fresh held-out cases
 ./venv/bin/python -m eval.run_fever_eval --seed 42   # FEVER sample (hundreds of Gemini calls)
 ```
+
+The NLI comparison commands are in [docs/judge_comparison.md](docs/judge_comparison.md).
 
 The test suite covers the ingestion logic (including regression tests for the multi-language and chunking bugs), retrieval against a real Postgres, the verdict step with Gemini mocked, and the API. The model is mocked in tests, so the suite never spends API quota; model quality is measured separately by the evals above.
 
@@ -170,7 +193,7 @@ flowchart LR
 
 ## Known limitations
 
-- **Small corpus and small eval.** Nine products and 373 chunks. The 27-case eval is hand-written by the author and is a regression check, not a benchmark.
+- **Small corpus and small evals.** Nine products and 373 chunks. Both 27-case product sets are hand-written by the author, so one case is worth 3.7 points: they are regression checks, not benchmarks. The NLI comparison is offline only and rests on the same small sets.
 - **The judge is an LLM.** Quality depends on a hosted model. During development, an unchanged prompt and unchanged data started misclassifying one case after an upstream model update (the pipeline dropped from 100% to 96.3% until the prompt was tightened). Pinning a model name does not freeze its behavior.
 - **Latency and quotas.** On the free tier, the time for one `/verify` call varies widely (from about 1 second to over 20 seconds in testing), and almost all of it is the Gemini call, not retrieval. The daily quota is also limited.
 - **Retail-page noise.** Four products come from scraped web pages that include navigation, pricing and reviews; retrieval usually still surfaces the right passage, but the chunks are noisier than the PDF manuals.
@@ -184,10 +207,12 @@ flowchart LR
 ```
 app/          FastAPI app: main.py (API), retrieval.py, verdict.py, logging_config.py
 ingestion/    ingest.py (extract, chunk, embed, store) and inspect_db.py (checks the database)
-eval/         run_eval.py (27-case set), run_fever_eval.py (FEVER sample), metrics.py
+eval/         run_eval.py (product sets), run_fever_eval.py (FEVER sample), metrics.py,
+              nli_judge.py, run_nli_eval.py, compare_judges.py (offline NLI comparison)
 tests/        pytest suite
+docs/         judge_comparison.md (LLM vs NLI write-up)
 data/raw/     source documents, one folder per product
-data/eval/    eval set and committed result files
+data/eval/    dev and held-out eval sets and committed result files
 docker/       init.sql (pgvector extension and table schema)
 .github/      CI/CD workflow
 ```
