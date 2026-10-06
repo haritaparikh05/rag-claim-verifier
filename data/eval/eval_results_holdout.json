@@ -1,0 +1,268 @@
+{
+  "results": [
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "has a maximum output of 400 lumens",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Lumens: [High] 400 lm, [Medium] 200 lm, [Low] 6 lm",
+      "match": true
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "is made in the USA",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": false
+    },
+    {
+      "product_id": "black_diamond_spot_400",
+      "claim": "has a built-in whistle",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "charges through a USB-C cable",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Cable type: USB \u2013 C charging cable",
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "weighs more than 1 kilogram",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Net weight: 0.55kg/1.21 lbs",
+      "match": true
+    },
+    {
+      "product_id": "jbl_flip_6",
+      "claim": "has a built-in FM radio",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "is made in the USA",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1,
+      "cited_passage": "Made in the USA.",
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "is made of stainless steel",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Thoughtfully made from Tritan Renew.",
+      "match": true
+    },
+    {
+      "product_id": "nalgene_32oz_wide_mouth",
+      "claim": "keeps drinks cold for 24 hours",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "can be recharged through a Micro-USB cable",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Choose between USB-C or Micro USB recharging.",
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "supports Qualcomm Quick Charge",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Does not support Qualcomm Quick Charge.",
+      "match": true
+    },
+    {
+      "product_id": "anker_313_powercore_10k",
+      "claim": "is approved for carrying on airplanes",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "has two vestibules",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Two vestibules for gear storage and extra weather protection",
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "weighs over 10 pounds in total",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "Total Weight\n4 lbs. 2 oz.",
+      "match": true
+    },
+    {
+      "product_id": "alps_helix_2",
+      "claim": "has a built-in LED light",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "the inner cooking pot can be washed in a dishwasher",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Hand wash with hot water and mild dish soap or wash in dishwasher*",
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "runs on 240 volt power",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "\u2022 DO NOT use the appliance in electrical systems other than\n120 V ~ 60 Hz for North America.",
+      "match": true
+    },
+    {
+      "product_id": "instant_pot_duo",
+      "claim": "connects to a smartphone app over Wi-Fi",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a 72-ounce pitcher",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Pitcher Capacity: 72 oz.",
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "the Nutri Ninja cup holds 32 ounces",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1,
+      "cited_passage": "Nutri Ninja\u00ae Cup Capacity: 16 oz.",
+      "match": true
+    },
+    {
+      "product_id": "ninja_blender_bl621",
+      "claim": "has a built-in heating element for making soup",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "When blending soups and sauces, make sure they\u2019re cooled to room temperature first. Ninja \u00ae containers are not intended for hot blending.",
+      "match": false
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "comes with a 2-year worldwide guarantee",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "\u2022 2-year worldwide guarantee",
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has a 2000 W power rating",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1.0,
+      "cited_passage": "\u2022 Power: 1400 W",
+      "match": true
+    },
+    {
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "includes a built-in food probe thermometer",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "offers up to 40 hours of playtime with noise cancelling on",
+      "expected_verdict": "supported",
+      "actual_verdict": "supported",
+      "confidence": 1.0,
+      "cited_passage": "Up to 40 hours of non-stop playtime in wireless active noise cancellation mode",
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "weighs over 500 grams",
+      "expected_verdict": "contradicted",
+      "actual_verdict": "contradicted",
+      "confidence": 1,
+      "cited_passage": "Weight\n255g",
+      "match": true
+    },
+    {
+      "product_id": "soundcore_life_q20",
+      "claim": "can connect to two devices at the same time",
+      "expected_verdict": "unverifiable",
+      "actual_verdict": "unverifiable",
+      "confidence": 1.0,
+      "cited_passage": "",
+      "match": true
+    }
+  ],
+  "metrics": {
+    "supported": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 9
+    },
+    "contradicted": {
+      "precision": 0.8888888888888888,
+      "recall": 0.8888888888888888,
+      "f1": 0.8888888888888888,
+      "support": 9
+    },
+    "unverifiable": {
+      "precision": 0.8888888888888888,
+      "recall": 0.8888888888888888,
+      "f1": 0.8888888888888888,
+      "support": 9
+    },
+    "overall_accuracy": 0.9259259259259259
+  }
+}

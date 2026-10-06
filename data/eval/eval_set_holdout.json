@@ -1,0 +1,164 @@
+[
+  {
+    "product_id": "black_diamond_spot_400",
+    "claim": "has a maximum output of 400 lumens",
+    "expected_verdict": "supported",
+    "note": "Product page: 'Lumens: [High] 400 lm' and '400 Lumen max output'"
+  },
+  {
+    "product_id": "black_diamond_spot_400",
+    "claim": "is made in the USA",
+    "expected_verdict": "contradicted",
+    "note": "Product page: 'Country of Origin: China'"
+  },
+  {
+    "product_id": "black_diamond_spot_400",
+    "claim": "has a built-in whistle",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of a whistle in the manual or the product page"
+  },
+  {
+    "product_id": "jbl_flip_6",
+    "claim": "charges through a USB-C cable",
+    "expected_verdict": "supported",
+    "note": "Spec sheet: 'Cable type: USB - C charging cable'"
+  },
+  {
+    "product_id": "jbl_flip_6",
+    "claim": "weighs more than 1 kilogram",
+    "expected_verdict": "contradicted",
+    "note": "Spec sheet: 'Net weight: 0.55kg/1.21 lbs'"
+  },
+  {
+    "product_id": "jbl_flip_6",
+    "claim": "has a built-in FM radio",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of FM radio or a tuner"
+  },
+  {
+    "product_id": "nalgene_32oz_wide_mouth",
+    "claim": "is made in the USA",
+    "expected_verdict": "supported",
+    "note": "Product page: 'Made in the USA'"
+  },
+  {
+    "product_id": "nalgene_32oz_wide_mouth",
+    "claim": "is made of stainless steel",
+    "expected_verdict": "contradicted",
+    "note": "Product page: 'Material: Tritan Renew'"
+  },
+  {
+    "product_id": "nalgene_32oz_wide_mouth",
+    "claim": "keeps drinks cold for 24 hours",
+    "expected_verdict": "unverifiable",
+    "note": "No insulation or temperature-retention claim on the page"
+  },
+  {
+    "product_id": "anker_313_powercore_10k",
+    "claim": "can be recharged through a Micro-USB cable",
+    "expected_verdict": "supported",
+    "note": "Product page: 'Choose between USB-C or Micro USB recharging.'"
+  },
+  {
+    "product_id": "anker_313_powercore_10k",
+    "claim": "supports Qualcomm Quick Charge",
+    "expected_verdict": "contradicted",
+    "note": "Product page: 'Does not support Qualcomm Quick Charge.'"
+  },
+  {
+    "product_id": "anker_313_powercore_10k",
+    "claim": "is approved for carrying on airplanes",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of airline or flight approval"
+  },
+  {
+    "product_id": "alps_helix_2",
+    "claim": "has two vestibules",
+    "expected_verdict": "supported",
+    "note": "Product page: 'Two vestibules for gear storage and extra weather protection'"
+  },
+  {
+    "product_id": "alps_helix_2",
+    "claim": "weighs over 10 pounds in total",
+    "expected_verdict": "contradicted",
+    "note": "Product page: 'Total Weight 4 lbs. 2 oz.'"
+  },
+  {
+    "product_id": "alps_helix_2",
+    "claim": "has a built-in LED light",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of lighting"
+  },
+  {
+    "product_id": "instant_pot_duo",
+    "claim": "the inner cooking pot can be washed in a dishwasher",
+    "expected_verdict": "supported",
+    "note": "Manual: 'Or you can wash the inner cooking pot in the dishwasher.'"
+  },
+  {
+    "product_id": "instant_pot_duo",
+    "claim": "runs on 240 volt power",
+    "expected_verdict": "contradicted",
+    "note": "Manual: 'DO NOT use the appliance in electrical systems other than 120 V ~ 60 Hz for North America.'"
+  },
+  {
+    "product_id": "instant_pot_duo",
+    "claim": "connects to a smartphone app over Wi-Fi",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of Wi-Fi, Bluetooth or an app"
+  },
+  {
+    "product_id": "ninja_blender_bl621",
+    "claim": "has a 72-ounce pitcher",
+    "expected_verdict": "supported",
+    "note": "Manual: 'Pitcher Capacity: 72 oz.'"
+  },
+  {
+    "product_id": "ninja_blender_bl621",
+    "claim": "the Nutri Ninja cup holds 32 ounces",
+    "expected_verdict": "contradicted",
+    "note": "Manual: 'Nutri Ninja Cup Capacity: 16 oz.'"
+  },
+  {
+    "product_id": "ninja_blender_bl621",
+    "claim": "has a built-in heating element for making soup",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of heating or soup making"
+  },
+  {
+    "product_id": "philips_airfryer_hd9252",
+    "claim": "comes with a 2-year worldwide guarantee",
+    "expected_verdict": "supported",
+    "note": "Spec sheet: 'Service: 2-year worldwide guarantee'"
+  },
+  {
+    "product_id": "philips_airfryer_hd9252",
+    "claim": "has a 2000 W power rating",
+    "expected_verdict": "contradicted",
+    "note": "Spec sheet: 'Power: 1400 W'"
+  },
+  {
+    "product_id": "philips_airfryer_hd9252",
+    "claim": "includes a built-in food probe thermometer",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of a probe or thermometer"
+  },
+  {
+    "product_id": "soundcore_life_q20",
+    "claim": "offers up to 40 hours of playtime with noise cancelling on",
+    "expected_verdict": "supported",
+    "note": "Product page: 'Up to 40 hours of non-stop playtime in wireless active noise cancellation mode'"
+  },
+  {
+    "product_id": "soundcore_life_q20",
+    "claim": "weighs over 500 grams",
+    "expected_verdict": "contradicted",
+    "note": "Product page specs: 'Weight 255g'"
+  },
+  {
+    "product_id": "soundcore_life_q20",
+    "claim": "can connect to two devices at the same time",
+    "expected_verdict": "unverifiable",
+    "note": "No mention of multipoint or simultaneous device connection"
+  }
+]

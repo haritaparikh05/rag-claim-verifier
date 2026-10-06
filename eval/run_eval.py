@@ -1,3 +1,4 @@
+import argparse
 import json
 import sys
 import time
@@ -7,14 +8,26 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.verdict import verify_claim
 from eval.metrics import compute_metrics, print_metrics_report
 
-EVAL_SET_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "eval_set.json"
-RESULTS_PATH = Path(__file__).resolve().parent.parent / "data" / "eval" / "eval_results.json"
+EVAL_DIR = Path(__file__).resolve().parent.parent / "data" / "eval"
+# "dev" is the original 27 cases the pipeline and prompt were developed against; "holdout" is a fresh set
+# written afterwards, never used to change any prompt or rule.
+EVAL_SETS = {
+    "dev": ("eval_set.json", "eval_results.json"),
+    "holdout": ("eval_set_holdout.json", "eval_results_holdout.json"),
+}
 
 DELAY_BETWEEN_CALLS_SECONDS = 4  # stay under the Gemini free tier's ~15 requests/minute limit
 
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+    parser = argparse.ArgumentParser(description="Evaluate the full pipeline (retrieval + Gemini judge) on a labeled set")
+    parser.add_argument("--set", choices=sorted(EVAL_SETS), default="dev")
+    args = parser.parse_args()
+    set_file, results_file = EVAL_SETS[args.set]
+    EVAL_SET_PATH = EVAL_DIR / set_file
+    RESULTS_PATH = EVAL_DIR / results_file
 
     with open(EVAL_SET_PATH, encoding="utf-8") as f:
         eval_set = json.load(f)
