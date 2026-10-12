@@ -1,3 +1,4 @@
+import argparse
 import os
 import re
 from pathlib import Path
@@ -115,12 +116,38 @@ def get_db_connection():
     return conn
 
 
+def products_needing_ingest(product_ids: list[str], already_ingested: set[str], skip_existing: bool) -> list[str]:
+    """Which products to (re)ingest: all of them by default, or only those with no chunks yet when skipping."""
+    if not skip_existing:
+        return product_ids
+    return [p for p in product_ids if p not in already_ingested]
+
+
 def main():
-    model = SentenceTransformer(EMBEDDING_MODEL)
+    parser = argparse.ArgumentParser(description="Chunk, embed and store the product documents in data/raw")
+    parser.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help="leave products that already have chunks untouched (default: re-ingest every product)",
+    )
+    args = parser.parse_args()
+
     conn = get_db_connection()
     cur = conn.cursor()
 
-    product_dirs = sorted(p for p in DATA_DIR.iterdir() if p.is_dir())
+    all_product_dirs = sorted(p for p in DATA_DIR.iterdir() if p.is_dir())
+    cur.execute("SELECT DISTINCT product_id FROM document_chunks")
+    already_ingested = {row[0] for row in cur.fetchall()}
+    wanted = set(products_needing_ingest([p.name for p in all_product_dirs], already_ingested, args.skip_existing))
+    product_dirs = [p for p in all_product_dirs if p.name in wanted]
+
+    if not product_dirs:
+        print(f"All {len(all_product_dirs)} products are already ingested, nothing to do.")
+        cur.close()
+        conn.close()
+        return
+
+    model = SentenceTransformer(EMBEDDING_MODEL)
     total_chunks = 0
 
     for product_dir in product_dirs:

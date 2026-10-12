@@ -7,8 +7,21 @@ from ingestion.ingest import (
     _is_section_header,
     chunk_text,
     extract_text,
+    products_needing_ingest,
     restrict_to_english_section,
 )
+
+
+def test_products_needing_ingest_returns_everything_by_default():
+    assert products_needing_ingest(["a", "b", "c"], {"a", "b"}, skip_existing=False) == ["a", "b", "c"]
+
+
+def test_products_needing_ingest_skips_already_ingested_when_asked():
+    assert products_needing_ingest(["a", "b", "c"], {"a", "b"}, skip_existing=True) == ["c"]
+
+
+def test_products_needing_ingest_returns_nothing_when_all_are_present():
+    assert products_needing_ingest(["a", "b"], {"a", "b", "extra"}, skip_existing=True) == []
 
 
 def test_chunk_text_splits_long_text_into_multiple_chunks():

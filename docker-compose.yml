@@ -13,13 +13,34 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-claimverifier}"]
+      # -h 127.0.0.1 makes this a TCP check. On a brand-new volume the image first runs a temporary server that
+      # only listens on a unix socket while init.sql executes, so a socket check can pass before the tables exist
+      # and before other containers are able to connect.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U ${DB_USER:-claimverifier}"]
       interval: 5s
       timeout: 5s
       retries: 5
 
+  # One-shot job: loads data/raw into the database, then exits. Products that are already ingested are skipped,
+  # so the second "docker compose up" does not redo the embedding work.
+  ingest:
+    build: .
+    image: claimverifier-app:local
+    container_name: claimverifier-ingest
+    command: ["python", "-m", "ingestion.ingest", "--skip-existing"]
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-claimverifier}
+      DB_USER: ${DB_USER:-claimverifier}
+      DB_PASSWORD: ${DB_PASSWORD:-claimverifier}
+    depends_on:
+      db:
+        condition: service_healthy
+
   app:
     build: .
+    image: claimverifier-app:local
     container_name: claimverifier-app
     restart: unless-stopped
     environment:
@@ -39,6 +60,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      ingest:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 10s
