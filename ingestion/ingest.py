@@ -1,4 +1,5 @@
 import argparse
+import logging
 import os
 import re
 from pathlib import Path
@@ -11,6 +12,9 @@ from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 
 load_dotenv()
+
+# pypdf warns once per embedded font that an optional package is missing; the extracted text is unaffected.
+logging.getLogger("pypdf").setLevel(logging.ERROR)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
