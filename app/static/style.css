@@ -206,6 +206,23 @@ td.passage-cell { min-width: 220px; max-width: 360px; white-space: pre-wrap; ove
 td.passage-cell.error-text { color: var(--bad); }
 
 .note { font-size: 0.82rem; color: var(--muted); }
+a { color: var(--accent-dark); }
+
+.topnav { display: flex; gap: 22px; margin-top: 16px; }
+.topnav a { color: #c5cde0; text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+.topnav a:hover { color: #fff; }
+.topnav a.current { color: #fff; border-bottom-color: #fff; }
+
+.muted { color: var(--muted); }
+.section-title { margin: 0 0 6px; font-size: 1.15rem; }
+.subtitle { margin: 22px 0 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.stat { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin: 18px 0; }
+.stat-number { font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--accent-dark); }
+.stat-detail { font-size: 0.95rem; }
+.source { margin: 14px 0 0; font-size: 0.78rem; color: var(--muted); }
+table.compact { width: auto; min-width: 280px; border: 1px solid var(--border); }
+.notes-list { margin: 0; padding-left: 20px; }
+.notes-list li { margin-bottom: 10px; }
 
 @media (max-width: 560px) {
   .card { padding: 18px; }

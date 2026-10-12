@@ -14,6 +14,7 @@ from app.batch import MAX_BATCH_SIZE, MAX_CONCURRENCY, MIN_SECONDS_BETWEEN_START
 from app.errors import NO_DOCUMENTS_MESSAGE, friendly_error
 from app.logging_config import configure_logging
 from app.products import PRODUCT_CATALOG, PRODUCT_IDS
+from app.results import load_results
 from app.retrieval import check_database, count_chunks_by_product
 from app.verdict import verify_claim
 
@@ -125,6 +126,17 @@ async def log_requests(request: Request, call_next):
 @app.get("/", include_in_schema=False)
 def index():
     return FileResponse(STATIC_DIR / "index.html")
+
+
+@app.get("/results", include_in_schema=False)
+def results_page():
+    return FileResponse(STATIC_DIR / "results.html")
+
+
+@app.get("/api/results")
+def api_results():
+    """Evaluation scores, computed on each request from the result files committed in data/eval."""
+    return load_results()
 
 
 @app.get("/health")
