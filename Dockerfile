@@ -15,6 +15,7 @@ COPY app/ app/
 COPY ingestion/ ingestion/
 COPY data/raw/ data/raw/
 COPY data/eval/ data/eval/
+COPY demo/ demo/
 
 EXPOSE 8000
 

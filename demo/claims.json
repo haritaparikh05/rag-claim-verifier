@@ -1,0 +1,83 @@
+{
+  "description": "Six claims for a live demo, in a suggested order. Each comes from the dev or held-out eval set, so its expected label was checked against the product documents beforehand, and 'observed_in_eval' is copied from the committed result files (the model can change over time, so a live run may differ).",
+  "claims": [
+    {
+      "order": 1,
+      "product_id": "jbl_flip_6",
+      "claim": "IP67 waterproof and dustproof",
+      "expected_verdict": "supported",
+      "source_set": "dev",
+      "observed_in_eval": {
+        "verdict": "supported",
+        "cited_passage": "IP67 waterproof and dustproof"
+      },
+      "known_miss": false,
+      "demonstrates": "A claim the spec sheet states word for word; the cited passage is the exact quote."
+    },
+    {
+      "order": 2,
+      "product_id": "black_diamond_spot_400",
+      "claim": "waterproof to 1 meter for 30 minutes",
+      "expected_verdict": "supported",
+      "source_set": "dev",
+      "observed_in_eval": {
+        "verdict": "supported",
+        "cited_passage": "IPX8: Waterproof-Tested to operate at least 1.1 meters underwater for 30 minutes."
+      },
+      "known_miss": false,
+      "demonstrates": "Threshold reasoning: the spec says at least 1.1 meters, which satisfies a claim of 1 meter."
+    },
+    {
+      "order": 3,
+      "product_id": "philips_airfryer_hd9252",
+      "claim": "has a 2000 W power rating",
+      "expected_verdict": "contradicted",
+      "source_set": "holdout",
+      "observed_in_eval": {
+        "verdict": "contradicted",
+        "cited_passage": "• Power: 1400 W"
+      },
+      "known_miss": false,
+      "demonstrates": "A numeric claim that conflicts with the spec; the cited line shows the real value."
+    },
+    {
+      "order": 4,
+      "product_id": "ninja_blender_bl621",
+      "claim": "the Nutri Ninja cup holds 32 ounces",
+      "expected_verdict": "contradicted",
+      "source_set": "holdout",
+      "observed_in_eval": {
+        "verdict": "contradicted",
+        "cited_passage": "Nutri Ninja® Cup Capacity: 16 oz."
+      },
+      "known_miss": false,
+      "demonstrates": "A contradiction found in a long PDF manual, not a short spec sheet."
+    },
+    {
+      "order": 5,
+      "product_id": "soundcore_life_q20",
+      "claim": "can connect to two devices at the same time",
+      "expected_verdict": "unverifiable",
+      "source_set": "holdout",
+      "observed_in_eval": {
+        "verdict": "unverifiable",
+        "cited_passage": ""
+      },
+      "known_miss": false,
+      "demonstrates": "A claim the documentation never mentions: the system says it cannot confirm it and cites nothing, instead of guessing."
+    },
+    {
+      "order": 6,
+      "product_id": "black_diamond_spot_400",
+      "claim": "is made in the USA",
+      "expected_verdict": "contradicted",
+      "source_set": "holdout",
+      "observed_in_eval": {
+        "verdict": "unverifiable",
+        "cited_passage": ""
+      },
+      "known_miss": true,
+      "demonstrates": "A known limitation: the product page says 'Country of Origin: China', but the judge answered unverifiable. It failed in the safe direction (declined to confirm) instead of approving a false claim."
+    }
+  ]
+}

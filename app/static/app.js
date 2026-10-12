@@ -22,6 +22,8 @@ const el = {
   form: $("verify-form"),
   claim: $("claim"),
   examples: $("examples"),
+  demoRow: $("demo-row"),
+  demoClaims: $("demo-claims"),
   submit: $("submit"),
   spinner: $("spinner"),
   submitLabel: $("submit-label"),
@@ -127,6 +129,33 @@ async function loadProducts() {
   el.submit.disabled = false;
   el.batchSubmit.disabled = false;
   renderExamples();
+  loadDemoClaims();
+}
+
+// Optional row of one-click demo claims (from demo/claims.json); the page works fine without it.
+async function loadDemoClaims() {
+  try {
+    const response = await fetch("/api/demo-claims");
+    if (!response.ok) return;
+    const demos = await response.json();
+    el.demoClaims.replaceChildren();
+    for (const demo of demos) {
+      const product = products.find((p) => p.product_id === demo.product_id && p.chunks > 0);
+      if (!product) continue;
+      const chip = makeElement("button", "chip", product.name + ": " + demo.claim);
+      chip.type = "button";
+      chip.addEventListener("click", () => {
+        el.product.value = demo.product_id;
+        renderExamples();
+        el.claim.value = demo.claim;
+        el.claim.focus();
+      });
+      el.demoClaims.appendChild(chip);
+    }
+    el.demoRow.hidden = el.demoClaims.children.length === 0;
+  } catch (err) {
+    el.demoRow.hidden = true;
+  }
 }
 
 function renderExamples() {
@@ -166,7 +195,7 @@ function setLoading(loading) {
   el.claim.disabled = loading;
   el.spinner.hidden = !loading;
   el.submitLabel.textContent = loading ? "Checking..." : "Check claim";
-  for (const chip of el.examples.querySelectorAll("button")) chip.disabled = loading;
+  for (const chip of document.querySelectorAll(".chips button")) chip.disabled = loading;
 }
 
 function renderResult(data, claim, product) {

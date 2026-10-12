@@ -22,6 +22,7 @@ configure_logging()
 logger = logging.getLogger("app")
 
 STATIC_DIR = Path(__file__).resolve().parent / "static"
+DEMO_CLAIMS_PATH = Path(__file__).resolve().parent.parent / "demo" / "claims.json"
 MAX_CLAIM_LENGTH = 500
 
 app = FastAPI(title="RAG Claim Verifier")
@@ -155,6 +156,17 @@ def products():
     except Exception as exc:
         _raise_friendly(exc)
     return [{**product, "chunks": counts.get(product["product_id"], 0)} for product in PRODUCT_CATALOG]
+
+
+@app.get("/api/demo-claims")
+def demo_claims():
+    """The claims in demo/claims.json (product and claim only, never the expected answers); empty if the file is missing."""
+    try:
+        with open(DEMO_CLAIMS_PATH, encoding="utf-8") as f:
+            claims = json.load(f)["claims"]
+    except (OSError, ValueError, KeyError):
+        return []
+    return [{"product_id": c["product_id"], "claim": c["claim"]} for c in claims]
 
 
 @app.post("/verify", response_model=VerifyResponse)
