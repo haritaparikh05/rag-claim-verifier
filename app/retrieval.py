@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import threading
 
 import psycopg2
 from pgvector.psycopg2 import register_vector
@@ -13,13 +14,22 @@ EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 DEFAULT_TOP_K = 8
 
 _model = None
+# Batch mode embeds claims from several threads: this lock stops two threads loading the model at once, and keeps
+# encoding one-at-a-time because the model's fast tokenizer is not safe to share between threads.
+_model_lock = threading.RLock()
 
 
 def get_model() -> SentenceTransformer:
     global _model
-    if _model is None:
-        _model = SentenceTransformer(EMBEDDING_MODEL)
+    with _model_lock:
+        if _model is None:
+            _model = SentenceTransformer(EMBEDDING_MODEL)
     return _model
+
+
+def embed_claim(claim: str):
+    with _model_lock:
+        return get_model().encode(claim)
 
 
 def get_db_connection(connect_timeout: int | None = None):
@@ -50,10 +60,20 @@ def check_database(timeout: int = 2) -> bool:
         return False
 
 
+def count_chunks_by_product(timeout: int = 2) -> dict[str, int]:
+    """How many chunks are stored for each product. Raises psycopg2.Error if the database is unreachable."""
+    conn = get_db_connection(connect_timeout=timeout)
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SELECT product_id, COUNT(*) FROM document_chunks GROUP BY product_id")
+            return {product_id: count for product_id, count in cur.fetchall()}
+    finally:
+        conn.close()
+
+
 def retrieve_chunks(product_id: str, claim: str, top_k: int = DEFAULT_TOP_K) -> list[dict]:
     """Return the top_k chunks for `product_id` most similar to `claim`, ordered by cosine distance (lower = more similar)."""
-    model = get_model()
-    claim_embedding = model.encode(claim)
+    claim_embedding = embed_claim(claim)
 
     conn = get_db_connection()
     cur = conn.cursor()
