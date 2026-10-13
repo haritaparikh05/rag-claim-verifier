@@ -6,6 +6,31 @@ Given a product claim (for example "waterproof to 30 meters", "BPA-free", "12-ho
 
 It is deliberately a **verification task, not a chatbot**: the model is given a claim plus retrieved evidence and must classify whether the evidence supports it, instead of writing a free-form answer that might hallucinate. That makes the output checkable (every verdict points at a quoted passage) and measurable (it is a classification problem with ground truth).
 
+## Quick demo
+
+You need Docker Desktop and a free Gemini API key from Google AI Studio (aistudio.google.com).
+
+```bash
+git clone https://github.com/haritaparikh05/rag-claim-verifier.git
+cd rag-claim-verifier
+cp .env.example .env        # open .env and set GEMINI_API_KEY=your-key
+docker compose up
+```
+
+Then open **http://localhost:8000**.
+
+On the first run, the app image is built (PyTorch and the embedding model are downloaded once and baked in), the nine products' documents are loaded into Postgres (373 chunks), and the app starts only after loading has finished. In testing, a clean start took about a minute and a half on a fast connection, and a restart with the data kept took under 10 seconds.
+
+What to try:
+- **Single claim:** pick a product and click an example or a demo claim. You get a verdict badge, the quoted passage, the confidence and the response time. The AI service on the free tier is not fast or steady (we measured anywhere from 1 to 25 seconds per answer).
+- **Batch:** paste up to 25 claims for one product, or upload a CSV with the claims in the first column. They are checked three at a time, the table fills in live, and the results download as CSV.
+- **Results:** http://localhost:8000/results shows the evaluation scores (development set, held-out set and the FEVER benchmark), computed from the committed result files, with the caveats.
+- **API:** interactive documentation is at http://localhost:8000/docs, and the endpoints are described below.
+
+Stop it with `Ctrl+C` or `docker compose down` (add `-v` to also delete the loaded data). If the page says no documents are loaded, run `docker compose run --rm ingest`. If it reports that the AI service's limit was reached, wait a minute and try again. To run it from Python without building the app image, see "Run it from Python" below.
+
+## What a verdict looks like
+
 ```
 POST /verify
 {"product_id": "jbl_flip_6", "claim": "IP67 waterproof and dustproof"}
@@ -110,9 +135,9 @@ Full method, tables, caveats and reproduce commands: [docs/judge_comparison.md](
 - **Retrieval depth of 8, not 5.** Raised after a regression where the correct chunk ranked sixth.
 - **Verified, not trusted.** The HuggingFace dataset card for the FEVER data had its field mapping backwards; the mapping used here was checked against the actual rows.
 
-## Run it locally
+## Run it from Python
 
-Prerequisites: Python 3.11+, Docker, and a free Gemini API key from Google AI Studio.
+For development: Postgres runs in Docker, and the app and scripts run from a Python environment. Prerequisites: Python 3.11+, Docker, and a free Gemini API key from Google AI Studio.
 
 ```bash
 git clone https://github.com/haritaparikh05/rag-claim-verifier.git
@@ -153,7 +178,13 @@ All sources are publicly available manufacturer documentation, used for a person
 
 ## API
 
-**`POST /verify`** - body: `product_id` (string) and `claim` (string). Returns `verdict` (`supported`, `contradicted` or `unverifiable`), `confidence` (0 to 1), `cited_passage` (exact quoted text, empty when unverifiable) and `explanation` (one sentence). Missing fields return `422`.
+**`POST /verify`** - body: `product_id` and `claim` (1 to 500 characters). Returns `verdict` (`supported`, `contradicted` or `unverifiable`), `confidence` (0 to 1), `cited_passage` (exact quoted text, empty when unverifiable), `explanation` (one sentence) and `latency_ms` (server time spent on the claim). Errors carry a plain-language `detail`: `422` for an empty, missing or over-long claim or a missing product, `404` for an unknown product, `429` when the AI service's limit is reached, `503` when it is busy, the database is unreachable or no documents are loaded, and `502` when the AI service rejects the request (for example, a bad API key).
+
+**`POST /verify/batch`** - body: `product_id` and `claims` (a list of 1 to 25 claims). The response streams newline-delimited JSON: a `start` line, one `result` line per claim as it finishes (each with its input `index`; a failed claim carries `error` and `status`), and a `done` line with totals. At most three claims run at a time and call starts are spaced at least 4 seconds apart, to stay inside the free tier. If the AI service's limit is reached, the remaining claims are skipped and the finished results are still returned.
+
+**`GET /products`** - the nine products with friendly names, categories, example claims and how many chunks are loaded (0 means ingestion has not run).
+
+**`GET /results`** and **`GET /api/results`** - the evaluation page and its data, computed from the committed result files.
 
 **`GET /health`** - checks that the service can actually reach and query the database. Returns `200 {"status": "ok", "database": "ok"}`, or `503 {"status": "degraded", "database": "unreachable"}`.
 
@@ -162,7 +193,7 @@ Every response carries an `x-request-id` header (an incoming one is honored), an
 ## Tests and evaluation
 
 ```bash
-./venv/bin/python -m pytest                 # 41 tests
+./venv/bin/python -m pytest                 # 96 tests
 ./venv/bin/python -m eval.run_eval                   # the 27-case dev set (uses the Gemini API)
 ./venv/bin/python -m eval.run_eval --set holdout     # the 27 fresh held-out cases
 ./venv/bin/python -m eval.run_fever_eval --seed 42   # FEVER sample (hundreds of Gemini calls)
@@ -197,7 +228,8 @@ flowchart LR
 - **The judge is an LLM.** Quality depends on a hosted model. During development, an unchanged prompt and unchanged data started misclassifying one case after an upstream model update (the pipeline dropped from 100% to 96.3% until the prompt was tightened). Pinning a model name does not freeze its behavior.
 - **Latency and quotas.** On the free tier, the time for one `/verify` call varies widely (from about 1 second to over 20 seconds in testing), and almost all of it is the Gemini call, not retrieval. The daily quota is also limited.
 - **Retail-page noise.** Four products come from scraped web pages that include navigation, pricing and reviews; retrieval usually still surfaces the right passage, but the chunks are noisier than the PDF manuals.
-- **No authentication or rate limiting on `/verify`.** The deployed instance is restricted by a firewall to the author's IP address and is not a public service. Adding an API key and a rate limit is the next hardening step before any public demo.
+- **No authentication on the API or the web page.** They are meant to be run locally with your own key. The deployed instance is restricted by a firewall to the author's IP address and is not a public service. Adding an API key and per-user rate limits is the next hardening step before any public demo.
+- **Batch mode is deliberately slow.** One product per run, at most 25 claims, three at a time with call starts at least 4 seconds apart, so a full batch of 25 takes at least about a minute and a half. That pacing keeps it inside the free tier of the AI service.
 - **Single instance, no load balancer or HTTPS.** The instance is stopped when idle to conserve credits, so there is no always-on public demo.
 - **Simple retrieval.** Fixed top-k with no reranking or hybrid search, and one product per request. Claims that depend on combining facts across products are out of scope.
 - **Manual ingestion.** Ingestion is a command run by hand against local files; the S3 bucket holds a copy but is not wired into the pipeline.
@@ -205,7 +237,9 @@ flowchart LR
 ## Repository layout
 
 ```
-app/          FastAPI app: main.py (API), retrieval.py, verdict.py, logging_config.py
+app/          FastAPI app: main.py (API and pages), retrieval.py, verdict.py, batch.py, products.py,
+              errors.py, results.py, logging_config.py; static/ holds the web pages
+demo/         claims.json (six demo claims with their expected and observed results)
 ingestion/    ingest.py (extract, chunk, embed, store) and inspect_db.py (checks the database)
 eval/         run_eval.py (product sets), run_fever_eval.py (FEVER sample), metrics.py,
               nli_judge.py, run_nli_eval.py, compare_judges.py (offline NLI comparison)
